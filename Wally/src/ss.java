@@ -140,4 +140,19 @@ public class ss extends JFrame {
 		btnNewButton_3.setBounds(435, 11, 89, 23);
 		contentPane.add(btnNewButton_3);
 	}
+
+	public void NewScreen() {
+		// TODO Auto-generated method stub
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					ss frame = new ss();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	
+	}
 }
