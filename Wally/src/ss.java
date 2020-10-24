@@ -1,5 +1,6 @@
 
 
+import java.sql.*;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -14,6 +15,7 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JLayeredPane;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.Box;
 import javax.swing.JButton;
@@ -79,9 +81,21 @@ public class ss extends JFrame {
 		JButton btnNewButton = new JButton("Login");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				Login l1 = new Login();
-				l1.NewScreen();
+				try {
+					Class.forName("com.mysql.cj.jdbc.Driver");
+					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/wally","root","12345678");
+					Statement stmt = con.createStatement();
+					String sql = "Select * from login_info where login_id = "+textField.getText()+" and password="+passwordField.getText().toString()+";";
+					ResultSet rs = stmt.executeQuery(sql);
+					if(rs.next()) {
+						JOptionPane.showMessageDialog(null, "Login Successful...");
+						Login l1 = new Login();
+						l1.NewScreen();
+					}
+					else
+						JOptionPane.showMessageDialog(null, "Incorrect Login id or Password");
+					con.close();
+				}catch(Exception e1) {System.out.print(e1);}
 				
 			}
 		});
