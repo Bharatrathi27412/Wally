@@ -125,5 +125,19 @@ public class ss extends JFrame {
 		});
 		btnNewButton_2.setBounds(362, 187, 138, 23);
 		contentPane.add(btnNewButton_2);
+		
+		JLabel lblNewLabel_3 = new JLabel("New User ?... ");
+		lblNewLabel_3.setBounds(362, 13, 75, 18);
+		contentPane.add(lblNewLabel_3);
+		
+		JButton btnNewButton_3 = new JButton("Signup");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Signup_page sp1 = new Signup_page();
+				sp1.NewScreen();
+			}
+		});
+		btnNewButton_3.setBounds(435, 11, 89, 23);
+		contentPane.add(btnNewButton_3);
 	}
 }
