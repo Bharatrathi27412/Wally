@@ -2,6 +2,8 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 
@@ -10,6 +12,10 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class Signup_page {
 
@@ -105,11 +111,16 @@ public class Signup_page {
 		JButton btnNewButton = new JButton("Done");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			
+				try {
+					Class.forName("com.mysql.cj.jdbc.Driver");
+					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/wally","root","12345678");
+					Statement stmt = con.createStatement();
+					String sql = "Insert into login_info values ("+textField_1.getText()+","+passwordField.getText().toString()+","+textField.getText()+","+textField_3.getText()+");";
+					stmt.executeUpdate(sql);
+					con.close();
+				}catch(Exception e1) {System.out.print(e1);}
 						ss s1 = new ss();
 						s1.NewScreen();
-					
-				
 			}
 		});
 		btnNewButton.setBounds(69, 298, 89, 23);

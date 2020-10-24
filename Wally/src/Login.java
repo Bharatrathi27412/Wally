@@ -37,13 +37,9 @@ public class Login {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 496, 389);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
-		JLabel lblNewLabel = new JLabel("Welcome");
-		lblNewLabel.setBounds(170, 91, 46, 14);
-		frame.getContentPane().add(lblNewLabel);
 	}
 
 }
