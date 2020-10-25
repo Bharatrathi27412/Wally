@@ -5,7 +5,12 @@
  */
 
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+
 import javax.swing.JOptionPane;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
@@ -50,24 +55,18 @@ public class AddExpense extends javax.swing.JFrame {
 
         jLabel2.setText("Item");
 
-        jTextField1.setText("jTextField1");
-
         jLabel3.setText("Description");
-
-        jTextField2.setText("jTextField1");
 
         jLabel4.setText("Amount");
 
-        jTextField3.setText("jTextField1");
-
         jLabel5.setText("Category");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "[---SELECT ONE---]", "Utility", "Rent", "Subscription", "Health", "Entertainment", "Others" }));
+        jComboBox1.setModel(new DefaultComboBoxModel(new String[] {"[---SELECT ONE---]", "Utility", "Subscription", "Rent/Emi", "Shopping", "Travel", "Health", "Others"}));
 
         bAdd.setText("ADD");
         bAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bAddActionPerformed(evt);
+                
             }
         });
 
