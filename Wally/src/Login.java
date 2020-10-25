@@ -4,6 +4,9 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Login {
 
@@ -40,6 +43,15 @@ public class Login {
 		frame.setBounds(100, 100, 496, 389);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		
+		JButton btnNewButton = new JButton("to Expense page");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AddExpense ae1 = new AddExpense();
+				ae1.NewScreen();
+			}
+		});
+		btnNewButton.setBounds(188, 146, 167, 23);
+		frame.getContentPane().add(btnNewButton);
 	}
-
 }
