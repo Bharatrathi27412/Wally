@@ -119,6 +119,7 @@ public class Signup_page {
 					stmt.executeUpdate(sql);
 					con.close();
 				}catch(Exception e1) {System.out.print(e1);}
+						frame.dispose();
 						ss s1 = new ss();
 						s1.NewScreen();
 			}

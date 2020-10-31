@@ -89,6 +89,7 @@ public class ss extends JFrame {
 					ResultSet rs = stmt.executeQuery(sql);
 					if(rs.next()) {
 						JOptionPane.showMessageDialog(null, "Login Successful...");
+						dispose();
 						Login l1 = new Login();
 						l1.NewScreen();
 					}
@@ -131,6 +132,7 @@ public class ss extends JFrame {
 		JButton btnNewButton_3 = new JButton("Signup");
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				dispose();
 				Signup_page sp1 = new Signup_page();
 				sp1.NewScreen();
 			}
