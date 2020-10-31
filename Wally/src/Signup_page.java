@@ -115,7 +115,7 @@ public class Signup_page {
 					Class.forName("com.mysql.cj.jdbc.Driver");
 					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/wally","root","12345678");
 					Statement stmt = con.createStatement();
-					String sql = "Insert into login_info values ("+textField_1.getText()+","+passwordField.getText().toString()+","+textField.getText()+","+textField_3.getText()+");";
+					String sql = "Insert into login_info values ('"+textField_1.getText()+"','"+passwordField.getText().toString()+"','"+textField.getText()+"',"+textField_3.getText()+");";
 					stmt.executeUpdate(sql);
 					con.close();
 				}catch(Exception e1) {System.out.print(e1);}
