@@ -129,6 +129,11 @@ public class Signup_page {
 		
 		
 		JButton btnNewButton_1 = new JButton("Cancel");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+			}
+		});
 		btnNewButton_1.setBounds(265, 298, 89, 23);
 		frame.getContentPane().add(btnNewButton_1);
 	}

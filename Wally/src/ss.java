@@ -105,9 +105,7 @@ public class ss extends JFrame {
 		JButton btnNewButton_1 = new JButton("Cancel");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				Cancel c1 = new Cancel();
-				c1.NewScreen();
+				dispose();
 				
 			}
 		});
