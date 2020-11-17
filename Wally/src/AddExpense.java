@@ -6,8 +6,10 @@
 
 
 import java.sql.Connection;
+import java.util.Date;
 import java.sql.DriverManager;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 
 import javax.swing.JOptionPane;
 import javax.swing.DefaultComboBoxModel;
@@ -21,7 +23,8 @@ import javax.swing.JLabel;
  */
 public class AddExpense extends javax.swing.JFrame {
 
-    /**
+    private Date date_1;
+	/**
      * Creates new form AddExpense
      */
     public AddExpense() {
@@ -48,6 +51,10 @@ public class AddExpense extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         bAdd = new javax.swing.JButton();
         bClose = new javax.swing.JButton();
+        date_1 = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String date = sdf.format(date_1);
+        
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
