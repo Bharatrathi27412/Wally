@@ -397,5 +397,4 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel sidebar;
     private javax.swing.JLabel updateL;
     private javax.swing.JPanel updateP;
-    // End of variables declaration//GEN-END:variables
 }
