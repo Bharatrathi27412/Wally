@@ -1,5 +1,6 @@
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -12,6 +13,7 @@ import java.awt.SystemColor;
 import javax.swing.JTextField;
 import javax.swing.JSeparator;
 import javax.swing.JPasswordField;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -70,11 +72,18 @@ public class FinalSignup {
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Wally - Your Personal Expense Tracker");
-		lblNewLabel.setFont(new Font("Century Gothic", Font.BOLD, 16));
-		lblNewLabel.setForeground(new Color(255, 255, 255));
-		lblNewLabel.setBounds(63, 186, 305, 70);
+		JLabel lblNewLabel = new JLabel("");
+		Image img = new ImageIcon(this.getClass().getResource("/wallylogo1.png")).getImage();
+		lblNewLabel.setIcon(new ImageIcon(img));
+		lblNewLabel.setBounds(10, 184, 379, 130);
 		panel.add(lblNewLabel);
+		
+		JLabel lblNewLabel_5 = new JLabel("Track your bills like never before!!!");
+		lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_5.setForeground(Color.BLACK);
+		lblNewLabel_5.setFont(new Font("Berlin Sans FB Demi", Font.PLAIN, 20));
+		lblNewLabel_5.setBounds(22, 435, 354, 53);
+		panel.add(lblNewLabel_5);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(25, 25, 112));
