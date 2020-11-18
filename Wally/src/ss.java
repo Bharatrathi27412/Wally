@@ -113,18 +113,6 @@ public class ss extends JFrame {
 		btnNewButton_1.setBounds(213, 187, 110, 23);
 		contentPane.add(btnNewButton_1);
 		
-		JButton btnNewButton_2 = new JButton("Forget Password");
-		btnNewButton_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				Forget_pass fp1 = new Forget_pass();
-				fp1.NewScreen();
-				
-			}
-		});
-		btnNewButton_2.setBounds(362, 187, 138, 23);
-		contentPane.add(btnNewButton_2);
-		
 		JLabel lblNewLabel_3 = new JLabel("New User ?... ");
 		lblNewLabel_3.setBounds(362, 13, 75, 18);
 		contentPane.add(lblNewLabel_3);

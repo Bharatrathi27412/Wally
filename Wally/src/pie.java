@@ -1,8 +1,14 @@
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+
+import com.mysql.cj.xdevapi.Statement;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.awt.event.ActionEvent;
 
 public class pie {
@@ -54,11 +60,11 @@ public class pie {
 				      /* Create MySQL Database Connection */
 				      Class.forName( "com.mysql.jdbc.Driver" );
 				      Connection connect = DriverManager.getConnection( 
-				         "jdbc:mysql://localhost:3306/jf_testdb" ,     
+				         "jdbc:mysql://localhost:3306/wally" ,     
 				         "root",     
-				         "root123");
+				         "12345678");
 				      
-				      Statement statement = connect.createStatement( );
+				      Statement statement = (Statement) connect.createStatement( );
 				      ResultSet resultSet = statement.executeQuery("select * from mobile_data" );
 				      DefaultPieDataset dataset = new DefaultPieDataset( );
 				      
