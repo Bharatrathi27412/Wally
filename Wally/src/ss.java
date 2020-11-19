@@ -99,8 +99,8 @@ public class ss extends JFrame {
 					if(rs.next()) {
 						JOptionPane.showMessageDialog(null, "Login Successful...");
 						dispose();
-						Login l1 = new Login();
-						l1.NewScreen();
+						//Dashboard d1 = new Dashboard();
+						//d1.NewScreen();
 					}
 					else
 						JOptionPane.showMessageDialog(null, "Incorrect Login id or Password");
@@ -132,8 +132,8 @@ public class ss extends JFrame {
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				Signup_page sp1 = new Signup_page();
-				sp1.NewScreen();
+				FinalSignup fs1 = new FinalSignup();
+				fs1.NewScreen();
 			}
 		});
 		btnNewButton_3.setBounds(627, 435, 89, 23);
