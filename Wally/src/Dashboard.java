@@ -6,6 +6,9 @@
 
 
 import java.awt.Color;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -56,9 +59,10 @@ public class Dashboard extends javax.swing.JFrame {
         dashboardP.setBackground(new java.awt.Color(54, 33, 89));
 
         dashboardL.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 18)); // NOI18N
+        Image img = new ImageIcon(this.getClass().getResource("/dashboard.png")).getImage();
+		dashboardL.setIcon(new ImageIcon(img));
         dashboardL.setForeground(new java.awt.Color(255, 255, 255));
         dashboardL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        dashboardL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wally/round_home_white_18dp.png"))); // NOI18N
         dashboardL.setText("     Dashboard");
         dashboardL.setMaximumSize(new java.awt.Dimension(97, 61));
         dashboardL.setMinimumSize(new java.awt.Dimension(97, 61));
@@ -88,9 +92,10 @@ public class Dashboard extends javax.swing.JFrame {
         addExpenseP.setBackground(new java.awt.Color(54, 33, 89));
 
         addExpenseL.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 18)); // NOI18N
+        Image img1 = new ImageIcon(this.getClass().getResource("/addexpense.png")).getImage();
+		addExpenseL.setIcon(new ImageIcon(img1));
         addExpenseL.setForeground(new java.awt.Color(255, 255, 255));
         addExpenseL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        addExpenseL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wally/baseline_add_box_white_18dp.png"))); // NOI18N
         addExpenseL.setText("  Add Expense");
         addExpenseL.setMaximumSize(new java.awt.Dimension(97, 61));
         addExpenseL.setMinimumSize(new java.awt.Dimension(97, 61));
@@ -120,9 +125,10 @@ public class Dashboard extends javax.swing.JFrame {
         expenseListP.setBackground(new java.awt.Color(54, 33, 89));
 
         expenseListL.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 18)); // NOI18N
+        Image img2 = new ImageIcon(this.getClass().getResource("/list.png")).getImage();
+		expenseListL.setIcon(new ImageIcon(img2));
         expenseListL.setForeground(new java.awt.Color(255, 255, 255));
         expenseListL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        expenseListL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wally/baseline_list_white_18dp.png"))); // NOI18N
         expenseListL.setText("  Expense List");
         expenseListL.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -179,9 +185,10 @@ public class Dashboard extends javax.swing.JFrame {
         analyticsP.setBackground(new java.awt.Color(54, 33, 89));
 
         analyticsL.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 18)); // NOI18N
+        Image img3 = new ImageIcon(this.getClass().getResource("/analytics.png")).getImage();
+		analyticsL.setIcon(new ImageIcon(img3));
         analyticsL.setForeground(new java.awt.Color(255, 255, 255));
         analyticsL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        analyticsL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wally/baseline_analytics_white_18dp.png"))); // NOI18N
         analyticsL.setText("      Analytics");
         analyticsL.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
