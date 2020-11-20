@@ -125,8 +125,8 @@ public class ss extends JFrame {
 		btnNewButton_1.setBounds(606, 317, 110, 23);
 		contentPane.add(btnNewButton_1);
 		
-		JButton btnNewButton_3 = new JButton("Sign up");
-		btnNewButton_3.setBackground(new Color(175, 238, 238));
+		JButton btnNewButton_3 = new JButton("Create New Account");
+		btnNewButton_3.setBackground(Color.YELLOW);
 		btnNewButton_3.setForeground(new Color(25, 25, 112));
 		btnNewButton_3.setFont(new Font("Century Gothic", Font.PLAIN, 12));
 		btnNewButton_3.addActionListener(new ActionListener() {
@@ -136,7 +136,7 @@ public class ss extends JFrame {
 				fs1.NewScreen();
 			}
 		});
-		btnNewButton_3.setBounds(627, 435, 89, 23);
+		btnNewButton_3.setBounds(433, 435, 283, 23);
 		contentPane.add(btnNewButton_3);
 		
 		JPanel panel = new JPanel();
@@ -177,7 +177,7 @@ public class ss extends JFrame {
 		JLabel lblNewLabel_3 = new JLabel("New User ?... ");
 		lblNewLabel_3.setFont(new Font("Century Gothic", Font.PLAIN, 14));
 		lblNewLabel_3.setForeground(Color.WHITE);
-		lblNewLabel_3.setBounds(521, 440, 96, 13);
+		lblNewLabel_3.setBounds(503, 378, 96, 13);
 		contentPane.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_1 = new JLabel("Login ID :- ");
