@@ -99,8 +99,8 @@ public class ss extends JFrame {
 					if(rs.next()) {
 						JOptionPane.showMessageDialog(null, "Login Successful...");
 						dispose();
-						//Dashboard d1 = new Dashboard();
-						//d1.NewScreen();
+						Dashboard d1 = new Dashboard();
+						d1.NewScreen();
 					}
 					else
 						JOptionPane.showMessageDialog(null, "Incorrect Login id or Password");
