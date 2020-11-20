@@ -6,6 +6,27 @@
 
 
 import java.awt.Color;
+import javax.swing.JPanel;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.GroupLayout;
+import javax.swing.LayoutStyle.ComponentPlacement;
+
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.renderer.category.BarRenderer;
+import org.jfree.data.jdbc.JDBCCategoryDataset;
+
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+import java.awt.event.ActionEvent;
 
 /**
  *
@@ -231,19 +252,70 @@ public class Analytics extends javax.swing.JFrame {
                 .addComponent(analyticsP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(382, Short.MAX_VALUE))
         );
+        
+        JPanel panel = new JPanel();
+        
+        JButton btnNewButton = new JButton("Category Wise");
+        btnNewButton.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		try {
+					Class.forName("com.mysql.cj.jdbc.Driver");
+					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/wally","root","12345678");
+					Statement stmt = con.createStatement();
+					String sql = "select distinct(category_name) as Category, sum(amount) as Amount from expense_list group by category_name;";
+					JDBCCategoryDataset dataset = new JDBCCategoryDataset(con,sql);
+					
+					con.close();
+					JFreeChart chart = ChartFactory.createBarChart("Query Chart", "Category", "Amount", dataset, PlotOrientation.VERTICAL, false, true, true);
+					BarRenderer renderer = null;
+					CategoryPlot plot = null;
+					renderer = new BarRenderer ();
+					ChartFrame frame = new ChartFrame("Line Graph",chart);
+					frame.setVisible(true);
+					frame.setSize(400, 650);
+					
+				}catch (Exception e1) {
+					JOptionPane.showMessageDialog(null,e1);
+				}
+			}
+        });
+        
+        JButton btnNewButton_1 = new JButton("New button");
+        
+        JButton btnNewButton_2 = new JButton("New button");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(sidebar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(794, Short.MAX_VALUE))
+        	jPanel1Layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(jPanel1Layout.createSequentialGroup()
+        			.addComponent(sidebar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING)
+        				.addGroup(jPanel1Layout.createSequentialGroup()
+        					.addPreferredGap(ComponentPlacement.RELATED)
+        					.addComponent(panel, GroupLayout.DEFAULT_SIZE, 756, Short.MAX_VALUE))
+        				.addGroup(jPanel1Layout.createSequentialGroup()
+        					.addGap(64)
+        					.addComponent(btnNewButton)
+        					.addGap(119)
+        					.addComponent(btnNewButton_1)
+        					.addGap(130)
+        					.addComponent(btnNewButton_2)))
+        			.addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(sidebar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        	jPanel1Layout.createParallelGroup(Alignment.LEADING)
+        		.addComponent(sidebar, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        		.addGroup(jPanel1Layout.createSequentialGroup()
+        			.addGap(11)
+        			.addComponent(panel, GroupLayout.DEFAULT_SIZE, 702, Short.MAX_VALUE)
+        			.addPreferredGap(ComponentPlacement.UNRELATED)
+        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(btnNewButton)
+        				.addComponent(btnNewButton_1)
+        				.addComponent(btnNewButton_2))
+        			.addGap(69))
         );
+        jPanel1.setLayout(jPanel1Layout);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -370,5 +442,4 @@ public class Analytics extends javax.swing.JFrame {
     private javax.swing.JPanel sidebar;
     private javax.swing.JLabel updateL;
     private javax.swing.JPanel updateP;
-    // End of variables declaration//GEN-END:variables
 }
