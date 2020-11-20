@@ -127,6 +127,7 @@ public class ss extends JFrame {
 		
 		JButton btnNewButton_3 = new JButton("Create New Account");
 		btnNewButton_3.setBackground(Color.YELLOW);
+		btnNewButton_3.setOpaque(true);
 		btnNewButton_3.setForeground(new Color(25, 25, 112));
 		btnNewButton_3.setFont(new Font("Century Gothic", Font.PLAIN, 12));
 		btnNewButton_3.addActionListener(new ActionListener() {
