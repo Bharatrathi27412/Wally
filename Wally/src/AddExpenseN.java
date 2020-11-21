@@ -241,6 +241,12 @@ public class AddExpenseN {
 		);
 		AnalyticsP.setLayout(gl_AnalyticsP);
 		
+		JLabel lblNewLabel = new JLabel("");
+		Image img4 = new ImageIcon(this.getClass().getResource("/dashlogo.png")).getImage();
+		lblNewLabel.setIcon(new ImageIcon(img4));
+		lblNewLabel.setBounds(10, 50, 266, 59);
+		sidebar.add(lblNewLabel);
+		
 		JPanel main_page = new JPanel();
 		main_page.setLayout(null);
 		main_page.setBackground(Color.GRAY);

@@ -153,9 +153,9 @@ public class dashboardBBB {
 		ExpenseListP.setBackground(new Color(54, 33, 89));
 		ExpenseListP.setBounds(0, 311, 285, 59);
 		sidebar.add(ExpenseListP);
+		Image img2 = new ImageIcon(this.getClass().getResource("/list.png")).getImage();
 		
 		JLabel ExpenseListL = new JLabel();
-		Image img2 = new ImageIcon(this.getClass().getResource("/list.png")).getImage();
 		ExpenseListL.setIcon(new ImageIcon(img2));
 		ExpenseListL.addMouseListener(new MouseAdapter() {
 			@Override
@@ -185,15 +185,16 @@ public class dashboardBBB {
 		GroupLayout gl_ExpenseListP = new GroupLayout(ExpenseListP);
 		gl_ExpenseListP.setHorizontalGroup(
 			gl_ExpenseListP.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 285, Short.MAX_VALUE)
-				.addGap(0, 310, Short.MAX_VALUE)
-				.addComponent(ExpenseListL, GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
+				.addGroup(Alignment.TRAILING, gl_ExpenseListP.createSequentialGroup()
+					.addContainerGap(12, Short.MAX_VALUE)
+					.addComponent(ExpenseListL, GroupLayout.PREFERRED_SIZE, 263, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap())
 		);
 		gl_ExpenseListP.setVerticalGroup(
 			gl_ExpenseListP.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 59, Short.MAX_VALUE)
-				.addGap(0, 59, Short.MAX_VALUE)
-				.addComponent(ExpenseListL, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 59, Short.MAX_VALUE)
+				.addGroup(gl_ExpenseListP.createSequentialGroup()
+					.addComponent(ExpenseListL, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		ExpenseListP.setLayout(gl_ExpenseListP);
 		
@@ -201,9 +202,9 @@ public class dashboardBBB {
 		AnalyticsP.setBackground(new Color(54, 33, 89));
 		AnalyticsP.setBounds(0, 382, 285, 59);
 		sidebar.add(AnalyticsP);
+		Image img3 = new ImageIcon(this.getClass().getResource("/analytics.png")).getImage();
 		
 		JLabel AnalyticsL = new JLabel();
-		Image img3 = new ImageIcon(this.getClass().getResource("/analytics.png")).getImage();
 		AnalyticsL.setIcon(new ImageIcon(img3));
 		AnalyticsL.addMouseListener(new MouseAdapter() {
 			@Override
@@ -233,15 +234,24 @@ public class dashboardBBB {
 		GroupLayout gl_AnalyticsP = new GroupLayout(AnalyticsP);
 		gl_AnalyticsP.setHorizontalGroup(
 			gl_AnalyticsP.createParallelGroup(Alignment.LEADING)
-				.addComponent(AnalyticsL, GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
+				.addGroup(gl_AnalyticsP.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(AnalyticsL, GroupLayout.PREFERRED_SIZE, 243, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(32, Short.MAX_VALUE))
 		);
 		gl_AnalyticsP.setVerticalGroup(
 			gl_AnalyticsP.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_AnalyticsP.createSequentialGroup()
-					.addComponent(AnalyticsL, GroupLayout.PREFERRED_SIZE, 59, Short.MAX_VALUE)
-					.addContainerGap())
+					.addComponent(AnalyticsL, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		AnalyticsP.setLayout(gl_AnalyticsP);
+		
+		JLabel lblNewLabel = new JLabel("");
+		Image img4 = new ImageIcon(this.getClass().getResource("/dashlogo.png")).getImage();
+		lblNewLabel.setIcon(new ImageIcon(img4));
+		lblNewLabel.setBounds(10, 50, 266, 59);
+		sidebar.add(lblNewLabel);
 		
 		JPanel main_page = new JPanel();
 		main_page.setLayout(null);
@@ -261,6 +271,4 @@ public class dashboardBBB {
 			}
 		});
 	}
-
-
 }
