@@ -314,9 +314,7 @@ public class AnalyticsN {
 						ChartPanel barpanel = new ChartPanel(chart);
 						panel.removeAll();
 						panel.add(barpanel,BorderLayout.CENTER);
-						panel.validate();
-						
-						
+						panel.validate();	
 						
 					}catch (Exception e1) {
 						JOptionPane.showMessageDialog(null,e1);
