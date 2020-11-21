@@ -99,7 +99,7 @@ public class ss extends JFrame {
 					if(rs.next()) {
 						JOptionPane.showMessageDialog(null, "Login Successful...");
 						dispose();
-						Dashboard d1 = new Dashboard();
+						dashboardBBB d1 = new dashboardBBB();
 						d1.NewScreen();
 					}
 					else
