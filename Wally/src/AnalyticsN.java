@@ -1,10 +1,12 @@
 import java.awt.EventQueue;
+import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.Color;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
@@ -62,6 +64,8 @@ public class AnalyticsN {
 		sidebar.add(dashboardP);
 		
 		JLabel DashboardL = new JLabel();
+		Image img = new ImageIcon(this.getClass().getResource("/dashboard.png")).getImage();
+		DashboardL.setIcon(new ImageIcon(img));
 		DashboardL.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -105,6 +109,8 @@ public class AnalyticsN {
 		sidebar.add(AddExpenseP);
 		
 		JLabel AddExpenseL = new JLabel();
+		Image img1 = new ImageIcon(this.getClass().getResource("/addexpense.png")).getImage();
+		AddExpenseL.setIcon(new ImageIcon(img1));
 		AddExpenseL.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -152,6 +158,8 @@ public class AnalyticsN {
 		sidebar.add(ExpenseListP);
 		
 		JLabel ExpenseListL = new JLabel();
+		Image img2 = new ImageIcon(this.getClass().getResource("/list.png")).getImage();
+		ExpenseListL.setIcon(new ImageIcon(img2));
 		ExpenseListL.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -198,6 +206,8 @@ public class AnalyticsN {
 		sidebar.add(AnalyticsP);
 		
 		JLabel AnalyticsL = new JLabel();
+		Image img3 = new ImageIcon(this.getClass().getResource("/analytics.png")).getImage();
+		AnalyticsL.setIcon(new ImageIcon(img3));
 		AnalyticsL.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
