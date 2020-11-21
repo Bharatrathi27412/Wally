@@ -6,13 +6,36 @@ import javax.swing.JPanel;
 import java.awt.Color;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.renderer.category.BarRenderer;
+import org.jfree.data.jdbc.JDBCCategoryDataset;
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
+import java.awt.BorderLayout;
 
 public class AnalyticsN {
 
@@ -54,6 +77,7 @@ public class AnalyticsN {
 		JPanel sidebar = new JPanel();
 		sidebar.setBounds(0, 0, 286, 708);
 		sidebar.setBackground(new Color(54, 33, 89));
+		JPanel panel = new JPanel();
 
 		frame.getContentPane().add(sidebar);
 		sidebar.setLayout(null);
@@ -259,8 +283,60 @@ public class AnalyticsN {
 		main_page.setBackground(Color.RED);
 		main_page.setBounds(286, 0, 770, 708);
 		frame.getContentPane().add(main_page);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"---Select One---", "Category Wise", "Month Wise", "Day Wise"}));
+		String graph_type = comboBox.getSelectedItem().toString();
+		comboBox.setBounds(67, 11, 157, 22);
+		main_page.add(comboBox);
+		
+		JButton btnNewButton = new JButton("Show Chart\r\n");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(comboBox.getSelectedItem().toString() == "Category Wise")
+				{
+					try {
+						Class.forName("com.mysql.cj.jdbc.Driver");
+						Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/wally","root","12345678");
+						Statement stmt = con.createStatement();
+						String sql = "select distinct(category_name) as Category, sum(amount) as Amount from expense_list group by category_name;";
+						JDBCCategoryDataset dataset = new JDBCCategoryDataset(con,sql);
+						
+						con.close();
+						JFreeChart chart = ChartFactory.createBarChart("Query Chart", "Category", "Amount", dataset, PlotOrientation.VERTICAL, false, true, true);
+						BarRenderer renderer = null;
+						CategoryPlot plot = null;
+						renderer = new BarRenderer ();
+						ChartFrame frame = new ChartFrame("Line Graph",chart);
+						//frame.setVisible(true);
+						//frame.setSize(400, 650);
+						
+						ChartPanel barpanel = new ChartPanel(chart);
+						panel.removeAll();
+						panel.add(barpanel,BorderLayout.CENTER);
+						panel.validate();
+						
+						
+						
+					}catch (Exception e1) {
+						JOptionPane.showMessageDialog(null,e1);
+					}
+				}
+				else if(comboBox.getSelectedItem().toString() == "Month Wise")
+				{
+					
+				}
+				else if(comboBox.getSelectedItem().toString() == "Day Wise") {
+					
+				}
+			}
+		});
+		btnNewButton.setBounds(272, 11, 89, 23);
+		main_page.add(btnNewButton);
+		
+		//JPanel panel = new JPanel();
+		panel.setBounds(10, 64, 736, 616);
+		main_page.add(panel);
+		panel.setLayout(new BorderLayout(0, 0));
 	}
-	
-
-
 }
