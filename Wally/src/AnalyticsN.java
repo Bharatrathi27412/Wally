@@ -36,6 +36,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import java.awt.BorderLayout;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
 
 public class AnalyticsN {
 
@@ -73,6 +77,8 @@ public class AnalyticsN {
 		frame.setBounds(100, 100, 1056, 730);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		
+		JComboBox comboBox_1 = new JComboBox();
 		
 		JPanel sidebar = new JPanel();
 		sidebar.setBounds(0, 0, 286, 708);
@@ -284,7 +290,26 @@ public class AnalyticsN {
 		main_page.setBounds(286, 0, 770, 708);
 		frame.getContentPane().add(main_page);
 		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setBounds(412, 15, 86, 14);
+		main_page.add(lblNewLabel_1);
+		
 		JComboBox comboBox = new JComboBox();
+		comboBox.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				if(comboBox.getSelectedItem().toString() == "Month Wise")
+				{
+					lblNewLabel_1.setText("Select Month");
+					comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"--Select One--", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"}));
+				}
+				else if(comboBox.getSelectedItem().toString() == "Day Wise")
+				{
+					lblNewLabel_1.setText("Select Date");
+					comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"--Select One--", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12","13","14","15","16","17","18","19","20"
+					,"21","22","23","24","25","26","27","28","29","30","31"}));
+				}
+			}
+		});
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"---Select One---", "Category Wise", "Month Wise", "Day Wise"}));
 		String graph_type = comboBox.getSelectedItem().toString();
 		comboBox.setBounds(67, 11, 157, 22);
@@ -322,19 +347,70 @@ public class AnalyticsN {
 				}
 				else if(comboBox.getSelectedItem().toString() == "Month Wise")
 				{
-					
+					try {
+						Class.forName("com.mysql.cj.jdbc.Driver");
+						Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/wally","root","12345678");
+						Statement stmt = con.createStatement();
+						String sql = "select distinct(category_name) as Category, sum(amount) as Amount from expense_list where exp_date like '____-"+comboBox_1.getSelectedItem().toString()+"-__' group by category_name;";
+						JDBCCategoryDataset dataset = new JDBCCategoryDataset(con,sql);
+						
+						con.close();
+						JFreeChart chart = ChartFactory.createBarChart("Query Chart", "Category", "Amount", dataset, PlotOrientation.VERTICAL, false, true, true);
+						BarRenderer renderer = null;
+						CategoryPlot plot = null;
+						renderer = new BarRenderer ();
+						ChartFrame frame = new ChartFrame("Line Graph",chart);
+						//frame.setVisible(true);
+						//frame.setSize(400, 650);
+						
+						ChartPanel barpanel = new ChartPanel(chart);
+						panel.removeAll();
+						panel.add(barpanel,BorderLayout.CENTER);
+						panel.validate();	
+						
+					}catch (Exception e1) {
+						JOptionPane.showMessageDialog(null,e1);
+					}
 				}
 				else if(comboBox.getSelectedItem().toString() == "Day Wise") {
-					
+					try {
+						Class.forName("com.mysql.cj.jdbc.Driver");
+						Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/wally","root","12345678");
+						Statement stmt = con.createStatement();
+						String sql = "select distinct(category_name) as Category, sum(amount) as Amount from expense_list where exp_date like '____-11-"+comboBox_1.getSelectedItem().toString()+"' group by category_name;";
+						JDBCCategoryDataset dataset = new JDBCCategoryDataset(con,sql);
+						
+						con.close();
+						JFreeChart chart = ChartFactory.createBarChart("Query Chart", "Category", "Amount", dataset, PlotOrientation.VERTICAL, false, true, true);
+						BarRenderer renderer = null;
+						CategoryPlot plot = null;
+						renderer = new BarRenderer ();
+						ChartFrame frame = new ChartFrame("Line Graph",chart);
+						//frame.setVisible(true);
+						//frame.setSize(400, 650);
+						
+						ChartPanel barpanel = new ChartPanel(chart);
+						panel.removeAll();
+						panel.add(barpanel,BorderLayout.CENTER);
+						panel.validate();	
+						
+					}catch (Exception e1) {
+						JOptionPane.showMessageDialog(null,e1);
+					}
 				}
 			}
 		});
-		btnNewButton.setBounds(272, 11, 89, 23);
+		btnNewButton.setBounds(247, 11, 114, 23);
 		main_page.add(btnNewButton);
 		
 		//JPanel panel = new JPanel();
 		panel.setBounds(10, 64, 736, 616);
 		main_page.add(panel);
 		panel.setLayout(new BorderLayout(0, 0));
+	
+		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"--Select One--", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"}));
+		comboBox_1.setBounds(508, 11, 102, 22);
+		main_page.add(comboBox_1);
+		
 	}
 }

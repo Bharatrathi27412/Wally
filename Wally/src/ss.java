@@ -94,7 +94,7 @@ public class ss extends JFrame {
 					Class.forName("com.mysql.cj.jdbc.Driver");
 					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/wally","root","12345678");
 					Statement stmt = con.createStatement();
-					String sql = "Select * from login_info where login_id = "+txtEnterLoginId.getText()+" and password="+pwdAaaaaaaaaa.getText().toString()+";";
+					String sql = "Select * from login_info where login_id = '"+txtEnterLoginId.getText()+"' and password='"+pwdAaaaaaaaaa.getText().toString()+"';";
 					ResultSet rs = stmt.executeQuery(sql);
 					if(rs.next()) {
 						JOptionPane.showMessageDialog(null, "Login Successful...");
