@@ -10,13 +10,24 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+
+import net.proteanit.sql.DbUtils;
+
 import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JButton;
+import javax.swing.JTable;
+import javax.swing.JScrollPane;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.sql.*;
+import javax.swing.*;
 
 public class ExpenseListN {
 
 	private JFrame frame;
+	private JTable table;
 
 	/**
 	 * Launch the application.
@@ -33,7 +44,7 @@ public class ExpenseListN {
 			}
 		});
 	}
-
+     
 	/**
 	 * Create the application.
 	 */
@@ -256,6 +267,31 @@ public class ExpenseListN {
 		main_page.setBackground(Color.ORANGE);
 		main_page.setBounds(286, 0, 770, 708);
 		frame.getContentPane().add(main_page);
+		
+		JButton btnLoadExpenseList = new JButton("Load Expense List");
+		btnLoadExpenseList.setFont(new Font("Century Gothic", Font.PLAIN, 14));
+		btnLoadExpenseList.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					Class.forName("com.mysql.cj.jdbc.Driver");
+					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/wally","root","12345678");
+					String sql = "Select * from expense_list";
+					PreparedStatement pst = con.prepareStatement(sql);
+					ResultSet rs = pst.executeQuery();
+					table.setModel(DbUtils.resultSetToTableModel(rs));
+				}catch(Exception e1){
+					e1.printStackTrace();
+				}
+			}
+		});
+		btnLoadExpenseList.setBounds(454, 49, 170, 47);
+		main_page.add(btnLoadExpenseList);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(55, 166, 662, 458);
+		main_page.add(scrollPane);
+		
+		table = new JTable();
+		scrollPane.setViewportView(table);
 	}
-
 }
