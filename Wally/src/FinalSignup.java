@@ -65,6 +65,7 @@ public class FinalSignup {
 		frame.setBounds(100, 100, 859, 551);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.setLocationRelativeTo(null);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(175, 238, 238));

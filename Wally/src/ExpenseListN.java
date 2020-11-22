@@ -61,6 +61,7 @@ public class ExpenseListN {
 		frame.setBounds(100, 100, 1056, 730);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.setLocationRelativeTo(null);
 		
 		JPanel sidebar = new JPanel();
 		sidebar.setBounds(0, 0, 286, 708);

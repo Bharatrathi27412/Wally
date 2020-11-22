@@ -62,6 +62,7 @@ public class ss extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		this.setLocationRelativeTo(null);
 		
 		JLabel lblNewLabel_2 = new JLabel("Password :- ");
 		lblNewLabel_2.setFont(new Font("Century Gothic", Font.BOLD, 14));
@@ -175,7 +176,7 @@ public class ss extends JFrame {
 		contentPane.add(txtEnterLoginId);
 		txtEnterLoginId.setColumns(10);
 		
-		JLabel lblNewLabel_	1 = new JLabel("Login ID :- ");
+		JLabel lblNewLabel_1 = new JLabel("Login ID :- ");
 		lblNewLabel_1.setFont(new Font("Century Gothic", Font.BOLD, 14));
 		lblNewLabel_1.setBounds(423, 98, 283, 20);
 		contentPane.add(lblNewLabel_1);
