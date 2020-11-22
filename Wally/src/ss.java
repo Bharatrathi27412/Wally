@@ -175,13 +175,7 @@ public class ss extends JFrame {
 		contentPane.add(txtEnterLoginId);
 		txtEnterLoginId.setColumns(10);
 		
-		JLabel lblNewLabel_3 = new JLabel("New User ?... ");
-		lblNewLabel_3.setFont(new Font("Century Gothic", Font.PLAIN, 14));
-		lblNewLabel_3.setForeground(Color.WHITE);
-		lblNewLabel_3.setBounds(503, 378, 96, 13);
-		contentPane.add(lblNewLabel_3);
-		
-		JLabel lblNewLabel_1 = new JLabel("Login ID :- ");
+		JLabel lblNewLabel_	1 = new JLabel("Login ID :- ");
 		lblNewLabel_1.setFont(new Font("Century Gothic", Font.BOLD, 14));
 		lblNewLabel_1.setBounds(423, 98, 283, 20);
 		contentPane.add(lblNewLabel_1);
