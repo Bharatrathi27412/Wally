@@ -300,18 +300,30 @@ public class AnalyticsN {
 			public void itemStateChanged(ItemEvent e) {
 				if(comboBox.getSelectedItem().toString() == "Month Wise")
 				{
+					comboBox_1.setVisible(true);
 					lblNewLabel_1.setText("Select Month");
 					comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"--Select One--", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"}));
 				}
 				else if(comboBox.getSelectedItem().toString() == "Day Wise")
 				{
 					lblNewLabel_1.setText("Select Date");
+					comboBox_1.setVisible(true);
 					comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"--Select One--", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12","13","14","15","16","17","18","19","20"
 					,"21","22","23","24","25","26","27","28","29","30","31"}));
 				}
+				else if(comboBox.getSelectedItem().toString() == "Year Wise") {
+					lblNewLabel_1.setText("Select Year");
+					comboBox_1.setVisible(true);
+					comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"--Select One--","2006", "2007", "2008", "2009", "2010", "2011", "2012","2013","2014","2015","2016","2017","2018","2019","2020"
+					,"2021","2022","2023","2024","2025"}));
+				}
+				else if(comboBox.getSelectedItem().toString() == "Category Wise") {
+					comboBox_1.setVisible(false);
+					lblNewLabel_1.setText("");
+				}
 			}
 		});
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"---Select One---", "Category Wise", "Month Wise", "Day Wise"}));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"---Select One---", "Category Wise", "Month Wise", "Day Wise","Year Wise"}));
 		String graph_type = comboBox.getSelectedItem().toString();
 		comboBox.setBounds(67, 11, 157, 22);
 		main_page.add(comboBox);
@@ -399,6 +411,33 @@ public class AnalyticsN {
 						JOptionPane.showMessageDialog(null,e1);
 					}
 				}
+				else if(comboBox.getSelectedItem().toString() == "Year Wise") {
+					try {
+						Class.forName("com.mysql.cj.jdbc.Driver");
+						Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/wally","root","12345678");
+						Statement stmt = con.createStatement();
+						String sql = "select distinct(category_name) as Category, sum(amount) as Amount from expense_list where exp_date like '"+comboBox_1.getSelectedItem().toString()+"-__-__' group by category_name;";
+						JDBCCategoryDataset dataset = new JDBCCategoryDataset(con,sql);
+						
+						con.close();
+						JFreeChart chart = ChartFactory.createBarChart("Query Chart", "Category", "Amount", dataset, PlotOrientation.VERTICAL, false, true, true);
+						BarRenderer renderer = null;
+						CategoryPlot plot = null;
+						renderer = new BarRenderer ();
+						ChartFrame frame = new ChartFrame("Line Graph",chart);
+						//frame.setVisible(true);
+						//frame.setSize(400, 650);
+						
+						ChartPanel barpanel = new ChartPanel(chart);
+						panel.removeAll();
+						panel.add(barpanel,BorderLayout.CENTER);
+						panel.validate();	
+						
+					}catch (Exception e1) {
+						JOptionPane.showMessageDialog(null,e1);
+					}
+				}
+				
 			}
 		});
 		btnNewButton.setBounds(247, 11, 114, 23);
@@ -409,9 +448,10 @@ public class AnalyticsN {
 		main_page.add(panel);
 		panel.setLayout(new BorderLayout(0, 0));
 	
-		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"--Select One--", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"}));
+		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"--Please select--"}));
 		comboBox_1.setBounds(508, 11, 102, 22);
 		main_page.add(comboBox_1);
+		comboBox_1.setVisible(false);
 		
 	}
 }
