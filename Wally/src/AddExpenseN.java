@@ -13,10 +13,24 @@ import javax.swing.SwingConstants;
 import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JTextField;
+import com.toedter.calendar.JDateChooser;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class AddExpenseN {
 
 	private JFrame frame;
+	private JTextField textField_itemname;
+	private JTextField textField_amount;
+	private JTextField textField_description;
 
 	/**
 	 * Launch the application.
@@ -250,9 +264,99 @@ public class AddExpenseN {
 		
 		JPanel main_page = new JPanel();
 		main_page.setLayout(null);
-		main_page.setBackground(Color.GRAY);
-		main_page.setBounds(286, 0, 770, 708);
+		main_page.setBackground(new Color(25, 25, 112));
+		main_page.setBounds(284, 0, 770, 708);
 		frame.getContentPane().add(main_page);
+		
+		JLabel lbl_addexpense = new JLabel("Add Expense");
+		lbl_addexpense.setFont(new Font("Century Gothic", Font.PLAIN, 16));
+		lbl_addexpense.setForeground(new Color(255, 255, 255));
+		lbl_addexpense.setBounds(335, 58, 115, 34);
+		main_page.add(lbl_addexpense);
+		
+		JLabel lbl_itemname = new JLabel("Item name :");
+		lbl_itemname.setFont(new Font("Century Gothic", Font.BOLD, 15));
+		lbl_itemname.setForeground(new Color(255, 255, 255));
+		lbl_itemname.setBounds(100, 160, 130, 13);
+		main_page.add(lbl_itemname);
+		
+		JLabel lbl_amount = new JLabel("Amount :");
+		lbl_amount.setFont(new Font("Century Gothic", Font.BOLD, 15));
+		lbl_amount.setForeground(new Color(255, 255, 255));
+		lbl_amount.setBounds(100, 243, 130, 13);
+		main_page.add(lbl_amount);
+		
+		JLabel lbl_description = new JLabel("Description :");
+		lbl_description.setForeground(new Color(255, 255, 255));
+		lbl_description.setFont(new Font("Century Gothic", Font.BOLD, 15));
+		lbl_description.setBounds(100, 329, 130, 21);
+		main_page.add(lbl_description);
+		
+		JLabel lbl_category = new JLabel("Category :");
+		lbl_category.setFont(new Font("Century Gothic", Font.BOLD, 15));
+		lbl_category.setForeground(new Color(255, 255, 255));
+		lbl_category.setBounds(100, 426, 130, 21);
+		main_page.add(lbl_category);
+		
+		JLabel lbl_date = new JLabel("Date :-");
+		lbl_date.setFont(new Font("Century Gothic", Font.BOLD, 15));
+		lbl_date.setForeground(new Color(255, 255, 255));
+		lbl_date.setBounds(100, 514, 130, 13);
+		main_page.add(lbl_date);
+		
+		JComboBox comboBox_category = new JComboBox();
+		comboBox_category.setFont(new Font("Century Gothic", Font.PLAIN, 14));
+		comboBox_category.setModel(new DefaultComboBoxModel(new String[] {"", "Utilities", "Subscription", "Rent/Emi", "Shopping", "Travel", "Health", "Others"}));
+		comboBox_category.setBounds(100, 457, 350, 21);
+		main_page.add(comboBox_category);
+		
+		textField_itemname = new JTextField();
+		textField_itemname.setBounds(100, 183, 350, 19);
+		main_page.add(textField_itemname);
+		textField_itemname.setColumns(10);
+		
+		textField_amount = new JTextField();
+		textField_amount.setBounds(100, 266, 350, 19);
+		main_page.add(textField_amount);
+		textField_amount.setColumns(10);
+		
+		textField_description = new JTextField();
+		textField_description.setBounds(100, 360, 350, 19);
+		main_page.add(textField_description);
+		textField_description.setColumns(10);
+		
+		JDateChooser dateChooser_date = new JDateChooser();
+		dateChooser_date.setBounds(100, 537, 139, 19);
+		main_page.add(dateChooser_date);
+		
+		JButton btn_enter = new JButton("Enter");
+		btn_enter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					Class.forName("com.mysql.cj.jdbc.Driver");
+					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/wally","root","12345678");
+					Statement stmt = con.createStatement();
+					String sql = "Insert into expense_list (category_name,item_name,amount,exp_date,description) values ('"+comboBox_category.getSelectedItem().toString()+"','"+textField_itemname.getText()+"','"+textField_amount.getText()+"','"+((JTextField)dateChooser_date.getDateEditor().getUiComponent()).getText()+"','"+textField_description.getText()+"')";
+					stmt.executeUpdate(sql);
+					con.close();
+				}catch(Exception e1) {System.out.print(e1);}
+						frame.dispose();
+						ss s1 = new ss();
+						s1.NewScreen();
+			}
+		});
+		btn_enter.setFont(new Font("Century Gothic", Font.PLAIN, 14));
+		btn_enter.setBounds(219, 623, 85, 21);
+		main_page.add(btn_enter);
+		
+		JButton btn_cancel = new JButton("Cancel");
+		btn_cancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+			}
+		});
+		btn_cancel.setFont(new Font("Century Gothic", Font.PLAIN, 14));
+		btn_cancel.setBounds(443, 623, 85, 21);
+		main_page.add(btn_cancel);
 	}
-
 }
