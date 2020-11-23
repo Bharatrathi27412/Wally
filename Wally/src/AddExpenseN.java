@@ -329,8 +329,8 @@ public class AddExpenseN {
 		dateChooser_date.setBounds(100, 537, 139, 19);
 		main_page.add(dateChooser_date);
 		
-		JButton btn_enter = new JButton("Enter");
-		btn_enter.addActionListener(new ActionListener() {
+		JButton btn_enterb = new JButton("Enter");
+		btn_enterb.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					Class.forName("com.mysql.cj.jdbc.Driver");
@@ -345,9 +345,9 @@ public class AddExpenseN {
 						s1.NewScreen();
 			}
 		});
-		btn_enter.setFont(new Font("Century Gothic", Font.PLAIN, 14));
-		btn_enter.setBounds(219, 623, 85, 21);
-		main_page.add(btn_enter);
+		btn_enterb.setFont(new Font("Century Gothic", Font.PLAIN, 14));
+		btn_enterb.setBounds(219, 623, 85, 21);
+		main_page.add(btn_enterb);
 		
 		JButton btn_cancel = new JButton("Cancel");
 		btn_cancel.addActionListener(new ActionListener() {
