@@ -12,6 +12,9 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
 import java.awt.event.ActionEvent;
 
 public class updateIncome extends JFrame {
@@ -23,7 +26,7 @@ public class updateIncome extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void NewScreen() {
+	public void NewScreen() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -74,6 +77,14 @@ public class updateIncome extends JFrame {
 		JButton btnNewButton = new JButton("CHANGE");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				try {
+					Class.forName("com.mysql.cj.jdbc.Driver");
+					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/wally","root","12345678");
+					Statement stmt = con.createStatement();
+					String sql = "update login_info set salary = " +textField.getText()+ " where login_id = 'Bharat1';";
+					stmt.executeUpdate(sql);
+					con.close();
+				}catch(Exception e1) {System.out.print(e1);}
 				JOptionPane.showMessageDialog(contentPane, "Salary successfully changed");
 				dispose();
 			}

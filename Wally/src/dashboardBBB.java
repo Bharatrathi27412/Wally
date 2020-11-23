@@ -16,6 +16,9 @@ import java.awt.event.MouseEvent;
 import javax.swing.JSeparator;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.LineBorder;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class dashboardBBB {
 
@@ -384,6 +387,14 @@ public class dashboardBBB {
 					.addComponent(lblNewLabel_3_3, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE))
 		);
 		panel_3.setLayout(gl_panel_3);
+		
+		JButton btnNewButton = new JButton("Update");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				updateIncome ui1 = new updateIncome();
+				ui1.NewScreen();
+			}
+		});
 		GroupLayout gl_main_page = new GroupLayout(main_page);
 		gl_main_page.setHorizontalGroup(
 			gl_main_page.createParallelGroup(Alignment.LEADING)
@@ -402,6 +413,9 @@ public class dashboardBBB {
 					.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE)
 					.addGap(26)
 					.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE))
+				.addGroup(gl_main_page.createSequentialGroup()
+					.addGap(60)
+					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE))
 		);
 		gl_main_page.setVerticalGroup(
 			gl_main_page.createParallelGroup(Alignment.LEADING)
@@ -418,7 +432,10 @@ public class dashboardBBB {
 						.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
 						.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
 						.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
-						.addComponent(panel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+						.addComponent(panel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(btnNewButton)
+					.addContainerGap(485, Short.MAX_VALUE))
 		);
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
@@ -441,5 +458,4 @@ public class dashboardBBB {
 		panel.setLayout(gl_panel);
 		main_page.setLayout(gl_main_page);
 	}
-
 }
