@@ -16,6 +16,7 @@ import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
@@ -328,6 +329,7 @@ public class AddExpenseN {
 		JDateChooser dateChooser_date = new JDateChooser();
 		dateChooser_date.setBounds(100, 537, 139, 19);
 		main_page.add(dateChooser_date);
+		dateChooser_date.setDateFormatString("yyyy-MM-dd");
 		
 		JButton btn_enterb = new JButton("Enter");
 		btn_enterb.addActionListener(new ActionListener() {
@@ -341,8 +343,8 @@ public class AddExpenseN {
 					con.close();
 				}catch(Exception e1) {System.out.print(e1);}
 						frame.dispose();
-						ss s1 = new ss();
-						s1.NewScreen();
+						dashboardBBB db2 = new dashboardBBB();
+						db2.NewScreen();
 			}
 		});
 		btn_enterb.setFont(new Font("Century Gothic", Font.PLAIN, 14));
