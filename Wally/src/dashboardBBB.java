@@ -3,22 +3,41 @@ import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+
 import javax.swing.JSeparator;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.LineBorder;
+
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.renderer.category.BarRenderer;
+import org.jfree.data.jdbc.JDBCCategoryDataset;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.BoxLayout;
 
 public class dashboardBBB {
 
@@ -69,7 +88,7 @@ public class dashboardBBB {
 		dashboardP.setBackground(new Color(54, 33, 89));
 		dashboardP.setBounds(0, 169, 285, 59);
 		sidebar.add(dashboardP);
-		
+	
 		JLabel DashboardL = new JLabel();
 		DashboardL.setHorizontalAlignment(SwingConstants.CENTER);
 		Image img = new ImageIcon(this.getClass().getResource("/dashboard.png")).getImage();
@@ -322,6 +341,8 @@ public class dashboardBBB {
 		);
 		panel_1.setLayout(gl_panel_1);
 		
+		
+		
 		JPanel panel_2 = new JPanel();
 		panel_2.setForeground(Color.WHITE);
 		panel_2.setBorder(new LineBorder(Color.LIGHT_GRAY, 2, true));
@@ -395,6 +416,34 @@ public class dashboardBBB {
 				ui1.NewScreen();
 			}
 		});
+		
+		JPanel panel_4 = new JPanel();
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/wally","root","12345678");
+			Statement stmt = con.createStatement();
+			String sql = "select distinct(category_name) as Category, sum(amount) as Amount from expense_list where exp_date = curdate() group by category_name;";
+			JDBCCategoryDataset dataset = new JDBCCategoryDataset(con,sql);
+			
+			con.close();
+			JFreeChart chart = ChartFactory.createBarChart("Query Chart", "Category", "Amount", dataset, PlotOrientation.HORIZONTAL, false, true, true);
+			BarRenderer renderer = null;
+			CategoryPlot plot = null;
+			renderer = new BarRenderer ();
+			ChartFrame frame = new ChartFrame("Line Graph",chart);
+			//frame.setVisible(true);
+			//frame.setSize(400, 650);
+			
+			ChartPanel barpanel = new ChartPanel(chart);
+			panel_4.removeAll();
+			panel_4.add(barpanel,BorderLayout.CENTER);
+			panel_4.validate();	
+			
+		}catch (Exception e1) {
+			JOptionPane.showMessageDialog(null,e1);
+		}
+		
+		
 		GroupLayout gl_main_page = new GroupLayout(main_page);
 		gl_main_page.setHorizontalGroup(
 			gl_main_page.createParallelGroup(Alignment.LEADING)
@@ -405,17 +454,21 @@ public class dashboardBBB {
 					.addComponent(account_name, GroupLayout.PREFERRED_SIZE, 204, GroupLayout.PREFERRED_SIZE))
 				.addComponent(separator, GroupLayout.PREFERRED_SIZE, 770, GroupLayout.PREFERRED_SIZE)
 				.addGroup(gl_main_page.createSequentialGroup()
-					.addGap(26)
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE)
-					.addGap(32)
-					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE)
-					.addGap(33)
-					.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE)
-					.addGap(26)
-					.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE))
-				.addGroup(gl_main_page.createSequentialGroup()
 					.addGap(60)
 					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE))
+				.addGroup(gl_main_page.createSequentialGroup()
+					.addGap(26)
+					.addGroup(gl_main_page.createParallelGroup(Alignment.TRAILING)
+						.addComponent(panel_4, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addGroup(Alignment.LEADING, gl_main_page.createSequentialGroup()
+							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE)
+							.addGap(32)
+							.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE)
+							.addGap(33)
+							.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE)
+							.addGap(26)
+							.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE)))
+					.addGap(41))
 		);
 		gl_main_page.setVerticalGroup(
 			gl_main_page.createParallelGroup(Alignment.LEADING)
@@ -435,8 +488,12 @@ public class dashboardBBB {
 						.addComponent(panel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(btnNewButton)
-					.addContainerGap(485, Short.MAX_VALUE))
+					.addGap(31)
+					.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 409, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(45, Short.MAX_VALUE))
 		);
+		panel_4.setLayout(new BoxLayout(panel_4, BoxLayout.X_AXIS));
+		
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
