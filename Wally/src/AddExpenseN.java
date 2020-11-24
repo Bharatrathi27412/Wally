@@ -25,6 +25,7 @@ import com.toedter.calendar.JDateChooser;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JSeparator;
 
 public class AddExpenseN {
 
@@ -312,16 +313,22 @@ public class AddExpenseN {
 		main_page.add(comboBox_category);
 		
 		textField_itemname = new JTextField();
+		textField_itemname.setBorder(null);
+		textField_itemname.setBackground(new Color(25, 25, 112));
 		textField_itemname.setBounds(100, 183, 350, 19);
 		main_page.add(textField_itemname);
 		textField_itemname.setColumns(10);
 		
 		textField_amount = new JTextField();
+		textField_amount.setBorder(null);
+		textField_amount.setBackground(new Color(25, 25, 112));
 		textField_amount.setBounds(100, 266, 350, 19);
 		main_page.add(textField_amount);
 		textField_amount.setColumns(10);
 		
 		textField_description = new JTextField();
+		textField_description.setBackground(new Color(25, 25, 112));
+		textField_description.setBorder(null);
 		textField_description.setBounds(100, 360, 350, 19);
 		main_page.add(textField_description);
 		textField_description.setColumns(10);
@@ -332,6 +339,7 @@ public class AddExpenseN {
 		dateChooser_date.setDateFormatString("yyyy-MM-dd");
 		
 		JButton btn_enterb = new JButton("Enter");
+		btn_enterb.setBackground(new Color(175, 238, 238));
 		btn_enterb.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -352,6 +360,7 @@ public class AddExpenseN {
 		main_page.add(btn_enterb);
 		
 		JButton btn_cancel = new JButton("Cancel");
+		btn_cancel.setBackground(new Color(175, 238, 238));
 		btn_cancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
@@ -360,5 +369,17 @@ public class AddExpenseN {
 		btn_cancel.setFont(new Font("Century Gothic", Font.PLAIN, 14));
 		btn_cancel.setBounds(443, 623, 85, 21);
 		main_page.add(btn_cancel);
+		
+		JSeparator separator = new JSeparator();
+		separator.setBounds(100, 201, 350, 2);
+		main_page.add(separator);
+		
+		JSeparator separator_1 = new JSeparator();
+		separator_1.setBounds(100, 387, 350, 2);
+		main_page.add(separator_1);
+		
+		JSeparator separator_2 = new JSeparator();
+		separator_2.setBounds(100, 293, 350, 2);
+		main_page.add(separator_2);
 	}
 }
