@@ -40,6 +40,7 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
+import com.toedter.calendar.JDateChooser;
 
 public class AnalyticsN {
 
@@ -291,8 +292,17 @@ public class AnalyticsN {
 		main_page.setBounds(286, 0, 770, 708);
 		frame.getContentPane().add(main_page);
 		
+		JDateChooser dateChooser = new JDateChooser();
+		dateChooser.setBounds(268, 15, 109, 20);
+		main_page.add(dateChooser);
+		comboBox_1.setVisible(false);
+		
+		JLabel lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setBounds(404, 21, 86, 14);
+		main_page.add(lblNewLabel_2);
+		
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setBounds(412, 15, 86, 14);
+		lblNewLabel_1.setBounds(177, 21, 86, 14);
 		main_page.add(lblNewLabel_1);
 		
 		JComboBox comboBox = new JComboBox();
@@ -300,32 +310,42 @@ public class AnalyticsN {
 			public void itemStateChanged(ItemEvent e) {
 				if(comboBox.getSelectedItem().toString() == "Month Wise")
 				{
-					comboBox_1.setVisible(true);
+					dateChooser.setDateFormatString("yyyy-MM-__");
+					dateChooser.setVisible(true);
+					comboBox_1.setVisible(false);
+					lblNewLabel_2.setText("");
 					lblNewLabel_1.setText("Select Month");
 					comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"--Select One--", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"}));
 				}
 				else if(comboBox.getSelectedItem().toString() == "Day Wise")
 				{
+					dateChooser.setDateFormatString("yyyy-MM-dd");
+					dateChooser.setVisible(true);
 					lblNewLabel_1.setText("Select Date");
-					comboBox_1.setVisible(true);
+					lblNewLabel_2.setText("");
+					comboBox_1.setVisible(false);
 					comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"--Select One--", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12","13","14","15","16","17","18","19","20"
 					,"21","22","23","24","25","26","27","28","29","30","31"}));
 				}
 				else if(comboBox.getSelectedItem().toString() == "Year Wise") {
-					lblNewLabel_1.setText("Select Year");
+					dateChooser.setVisible(false);
+					lblNewLabel_1.setText("");
+					lblNewLabel_2.setText("Select Year");
 					comboBox_1.setVisible(true);
 					comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"--Select One--","2006", "2007", "2008", "2009", "2010", "2011", "2012","2013","2014","2015","2016","2017","2018","2019","2020"
 					,"2021","2022","2023","2024","2025"}));
 				}
 				else if(comboBox.getSelectedItem().toString() == "Category Wise") {
+					dateChooser.setVisible(false);
 					comboBox_1.setVisible(false);
 					lblNewLabel_1.setText("");
+					lblNewLabel_2.setText("");
 				}
 			}
 		});
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"---Select One---", "Category Wise", "Month Wise", "Day Wise","Year Wise"}));
 		String graph_type = comboBox.getSelectedItem().toString();
-		comboBox.setBounds(67, 11, 157, 22);
+		comboBox.setBounds(10, 15, 157, 22);
 		main_page.add(comboBox);
 		
 		JButton btnNewButton = new JButton("Show Chart\r\n");
@@ -364,7 +384,7 @@ public class AnalyticsN {
 						Class.forName("com.mysql.cj.jdbc.Driver");
 						Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/wally","root","12345678");
 						Statement stmt = con.createStatement();
-						String sql = "select distinct(category_name) as Category, sum(amount) as Amount from expense_list where exp_date like '____-"+comboBox_1.getSelectedItem().toString()+"-__' group by category_name;";
+						String sql = "select distinct(category_name) as Category, sum(amount) as Amount from expense_list where exp_date like '"+((JTextField)dateChooser.getDateEditor().getUiComponent()).getText()+"' group by category_name;";
 						JDBCCategoryDataset dataset = new JDBCCategoryDataset(con,sql);
 						
 						con.close();
@@ -390,7 +410,7 @@ public class AnalyticsN {
 						Class.forName("com.mysql.cj.jdbc.Driver");
 						Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/wally","root","12345678");
 						Statement stmt = con.createStatement();
-						String sql = "select distinct(category_name) as Category, sum(amount) as Amount from expense_list where exp_date like '____-11-"+comboBox_1.getSelectedItem().toString()+"' group by category_name;";
+						String sql = "select distinct(category_name) as Category, sum(amount) as Amount from expense_list where exp_date like '"+((JTextField)dateChooser.getDateEditor().getUiComponent()).getText()+"' group by category_name;";
 						JDBCCategoryDataset dataset = new JDBCCategoryDataset(con,sql);
 						
 						con.close();
@@ -440,7 +460,7 @@ public class AnalyticsN {
 				
 			}
 		});
-		btnNewButton.setBounds(247, 11, 114, 23);
+		btnNewButton.setBounds(609, 15, 114, 23);
 		main_page.add(btnNewButton);
 		
 		//JPanel panel = new JPanel();
@@ -449,9 +469,10 @@ public class AnalyticsN {
 		panel.setLayout(new BorderLayout(0, 0));
 	
 		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"--Please select--"}));
-		comboBox_1.setBounds(508, 11, 102, 22);
+		comboBox_1.setBounds(484, 15, 102, 22);
 		main_page.add(comboBox_1);
-		comboBox_1.setVisible(false);
+		
+		
 		
 	}
 }
