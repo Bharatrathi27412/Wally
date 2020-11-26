@@ -19,7 +19,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.Statement;
 
 import javax.swing.JSeparator;
@@ -80,13 +79,17 @@ public class dashboardBBB {
 		
 		JPanel sidebar = new JPanel();
 		sidebar.setBounds(0, 0, 286, 708);
-		sidebar.setBackground(new Color(54, 33, 89));
+		//sidebar.setBackground(new Color(54, 36, 89));
+		sidebar.setBackground(new Color(18, 18, 18));
+
 
 		frame.getContentPane().add(sidebar);
 		sidebar.setLayout(null);
 		
 		JPanel dashboardP = new JPanel();
-		dashboardP.setBackground(new Color(54, 33, 89));
+		//dashboardP.setBackground(new Color(54, 33, 89));
+		dashboardP.setBackground(new Color(18, 18, 18));
+
 		dashboardP.setBounds(0, 169, 285, 59);
 		sidebar.add(dashboardP);
 	
@@ -128,7 +131,9 @@ public class dashboardBBB {
 		dashboardP.setLayout(gl_dashboardP);
 		
 		JPanel AddExpenseP = new JPanel();
-		AddExpenseP.setBackground(new Color(54, 33, 89));
+		//AddExpenseP.setBackground(new Color(54, 33, 89));
+		AddExpenseP.setBackground(new Color(18, 18, 18));
+
 		AddExpenseP.setBounds(0, 240, 285, 59);
 		sidebar.add(AddExpenseP);
 		
@@ -177,7 +182,10 @@ public class dashboardBBB {
 		AddExpenseP.setLayout(gl_AddExpenseP);
 		
 		JPanel ExpenseListP = new JPanel();
-		ExpenseListP.setBackground(new Color(54, 33, 89));
+		//ExpenseListP.setBackground(new Color(54, 33, 89));
+		ExpenseListP.setBackground(new Color(18, 18, 18));
+
+		
 		ExpenseListP.setBounds(0, 311, 285, 59);
 		sidebar.add(ExpenseListP);
 		Image img2 = new ImageIcon(this.getClass().getResource("/list.png")).getImage();
@@ -211,11 +219,8 @@ public class dashboardBBB {
 		ExpenseListL.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 18));
 		GroupLayout gl_ExpenseListP = new GroupLayout(ExpenseListP);
 		gl_ExpenseListP.setHorizontalGroup(
-			gl_ExpenseListP.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_ExpenseListP.createSequentialGroup()
-					.addContainerGap(12, Short.MAX_VALUE)
-					.addComponent(ExpenseListL, GroupLayout.PREFERRED_SIZE, 263, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap())
+			gl_ExpenseListP.createParallelGroup(Alignment.TRAILING)
+				.addComponent(ExpenseListL, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
 		);
 		gl_ExpenseListP.setVerticalGroup(
 			gl_ExpenseListP.createParallelGroup(Alignment.LEADING)
@@ -227,6 +232,8 @@ public class dashboardBBB {
 		
 		JPanel AnalyticsP = new JPanel();
 		AnalyticsP.setBackground(new Color(54, 33, 89));
+		AnalyticsP.setBackground(new Color(18, 18, 18));
+
 		AnalyticsP.setBounds(0, 382, 285, 59);
 		sidebar.add(AnalyticsP);
 		Image img3 = new ImageIcon(this.getClass().getResource("/analytics.png")).getImage();
@@ -261,10 +268,7 @@ public class dashboardBBB {
 		GroupLayout gl_AnalyticsP = new GroupLayout(AnalyticsP);
 		gl_AnalyticsP.setHorizontalGroup(
 			gl_AnalyticsP.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_AnalyticsP.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(AnalyticsL, GroupLayout.PREFERRED_SIZE, 243, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(32, Short.MAX_VALUE))
+				.addComponent(AnalyticsL, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
 		);
 		gl_AnalyticsP.setVerticalGroup(
 			gl_AnalyticsP.createParallelGroup(Alignment.LEADING)
@@ -275,143 +279,31 @@ public class dashboardBBB {
 		AnalyticsP.setLayout(gl_AnalyticsP);
 		
 		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		Image img4 = new ImageIcon(this.getClass().getResource("/dashlogo.png")).getImage();
 		lblNewLabel.setIcon(new ImageIcon(img4));
-		lblNewLabel.setBounds(10, 50, 266, 59);
+		lblNewLabel.setBounds(19, 51, 266, 59);
 		sidebar.add(lblNewLabel);
 		
 		JPanel main_page = new JPanel();
-		main_page.setBackground(Color.WHITE);
+		main_page.setBackground(new Color(34,40,44));
 		main_page.setBounds(286, 0, 770, 708);
 		frame.getContentPane().add(main_page);
 		
-		JPanel panel = new JPanel();
-		panel.setBackground(Color.WHITE);
-		panel.setForeground(Color.WHITE);
-		panel.setBorder(new LineBorder(Color.LIGHT_GRAY, 2, true));
-		
-		JLabel lblNewLabel_2 = new JLabel("INCOME");
-		lblNewLabel_2.setForeground(Color.LIGHT_GRAY);
-		lblNewLabel_2.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 14));
-		
-		JLabel lblNewLabel_3 = new JLabel("80000");
-		lblNewLabel_3.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 24));
-
-		
 		JLabel lblNewLabel_1 = new JLabel("Dashboard");
+		lblNewLabel_1.setForeground(Color.WHITE);
 		lblNewLabel_1.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 18));
 		
-		JSeparator separator = new JSeparator();
-		
 		JLabel account_name = new JLabel("Bharat Rathi");
+		account_name.setForeground(Color.WHITE);
 		Image img5 = new ImageIcon(this.getClass().getResource("/account.png")).getImage();
 		account_name.setIcon(new ImageIcon(img5));
 
 
 		account_name.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 18));
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setForeground(Color.WHITE);
-		panel_1.setBorder(new LineBorder(Color.LIGHT_GRAY, 2, true));
-		panel_1.setBackground(Color.WHITE);
-		
-		JLabel lblNewLabel_2_1 = new JLabel("EXPENSES");
-		lblNewLabel_2_1.setForeground(Color.LIGHT_GRAY);
-		lblNewLabel_2_1.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 14));
-		
-		JLabel lblNewLabel_3_1 = new JLabel("65000");
-		lblNewLabel_3_1.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 24));
-		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
-		gl_panel_1.setHorizontalGroup(
-			gl_panel_1.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 153, Short.MAX_VALUE)
-				.addGroup(gl_panel_1.createSequentialGroup()
-					.addGap(55)
-					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblNewLabel_2_1, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel_3_1, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE))
-					.addGap(9))
-		);
-		gl_panel_1.setVerticalGroup(
-			gl_panel_1.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 90, Short.MAX_VALUE)
-				.addGroup(gl_panel_1.createSequentialGroup()
-					.addGap(12)
-					.addComponent(lblNewLabel_2_1, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(lblNewLabel_3_1, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE))
-		);
-		panel_1.setLayout(gl_panel_1);
-		
-		
-		
-		JPanel panel_2 = new JPanel();
-		panel_2.setForeground(Color.WHITE);
-		panel_2.setBorder(new LineBorder(Color.LIGHT_GRAY, 2, true));
-		panel_2.setBackground(Color.WHITE);
-		
-		JLabel lblNewLabel_2_2 = new JLabel("SAVINGS");
-		lblNewLabel_2_2.setForeground(Color.LIGHT_GRAY);
-		lblNewLabel_2_2.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 14));
-		
-		JLabel lblNewLabel_3_2 = new JLabel("15000");
-		lblNewLabel_3_2.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 24));
-		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
-		gl_panel_2.setHorizontalGroup(
-			gl_panel_2.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 153, Short.MAX_VALUE)
-				.addGroup(gl_panel_2.createSequentialGroup()
-					.addGap(55)
-					.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblNewLabel_2_2, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel_3_2, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE))
-					.addGap(9))
-		);
-		gl_panel_2.setVerticalGroup(
-			gl_panel_2.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 90, Short.MAX_VALUE)
-				.addGroup(gl_panel_2.createSequentialGroup()
-					.addGap(12)
-					.addComponent(lblNewLabel_2_2, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(lblNewLabel_3_2, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE))
-		);
-		panel_2.setLayout(gl_panel_2);
-		
-		JPanel panel_3 = new JPanel();
-		panel_3.setForeground(Color.WHITE);
-		panel_3.setBorder(new LineBorder(Color.LIGHT_GRAY, 2, true));
-		panel_3.setBackground(Color.WHITE);
-		
-		JLabel lblNewLabel_2_3 = new JLabel("BUDGET\r\n");
-		lblNewLabel_2_3.setForeground(Color.LIGHT_GRAY);
-		lblNewLabel_2_3.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 14));
-		
-		JLabel lblNewLabel_3_3 = new JLabel("900000");
-		lblNewLabel_3_3.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 24));
-		GroupLayout gl_panel_3 = new GroupLayout(panel_3);
-		gl_panel_3.setHorizontalGroup(
-			gl_panel_3.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 153, Short.MAX_VALUE)
-				.addGroup(gl_panel_3.createSequentialGroup()
-					.addGap(55)
-					.addGroup(gl_panel_3.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblNewLabel_2_3, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel_3_3, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE))
-					.addGap(9))
-		);
-		gl_panel_3.setVerticalGroup(
-			gl_panel_3.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 90, Short.MAX_VALUE)
-				.addGroup(gl_panel_3.createSequentialGroup()
-					.addGap(12)
-					.addComponent(lblNewLabel_2_3, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(lblNewLabel_3_3, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE))
-		);
-		panel_3.setLayout(gl_panel_3);
-		
 		JButton btnNewButton = new JButton("Update");
+		btnNewButton.setBackground(Color.WHITE);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				updateIncome ui1 = new updateIncome();
@@ -420,6 +312,8 @@ public class dashboardBBB {
 		});
 		
 		JPanel panel_4 = new JPanel();
+		panel_4.setBorder(new LineBorder(new Color(44, 52, 58), 1, true));
+		panel_4.setBackground(new Color(44,52,58));
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/wally","root","12345678");
@@ -445,66 +339,28 @@ public class dashboardBBB {
 			JOptionPane.showMessageDialog(null,e1);
 		}
 		
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(44,52,58));
+		panel.setForeground(Color.MAGENTA);
+		panel.setBorder(new LineBorder(new Color(44,52,58), 1, true));
 		
-		GroupLayout gl_main_page = new GroupLayout(main_page);
-		gl_main_page.setHorizontalGroup(
-			gl_main_page.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_main_page.createSequentialGroup()
-					.addGap(26)
-					.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 106, GroupLayout.PREFERRED_SIZE)
-					.addGap(417)
-					.addComponent(account_name, GroupLayout.PREFERRED_SIZE, 204, GroupLayout.PREFERRED_SIZE))
-				.addComponent(separator, GroupLayout.PREFERRED_SIZE, 770, GroupLayout.PREFERRED_SIZE)
-				.addGroup(gl_main_page.createSequentialGroup()
-					.addGap(60)
-					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE))
-				.addGroup(gl_main_page.createSequentialGroup()
-					.addGap(26)
-					.addGroup(gl_main_page.createParallelGroup(Alignment.TRAILING)
-						.addComponent(panel_4, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addGroup(Alignment.LEADING, gl_main_page.createSequentialGroup()
-							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE)
-							.addGap(32)
-							.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE)
-							.addGap(33)
-							.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE)
-							.addGap(26)
-							.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE)))
-					.addGap(41))
-		);
-		gl_main_page.setVerticalGroup(
-			gl_main_page.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_main_page.createSequentialGroup()
-					.addGap(15)
-					.addGroup(gl_main_page.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-						.addGroup(gl_main_page.createSequentialGroup()
-							.addGap(4)
-							.addComponent(account_name, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)))
-					.addComponent(separator, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(47)
-					.addGroup(gl_main_page.createParallelGroup(Alignment.LEADING)
-						.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
-						.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
-						.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
-						.addComponent(panel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnNewButton)
-					.addGap(31)
-					.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 409, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(45, Short.MAX_VALUE))
-		);
-		panel_4.setLayout(new BoxLayout(panel_4, BoxLayout.X_AXIS));
+		JLabel lblNewLabel_2 = new JLabel("INCOME");
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblNewLabel_2.setForeground(Color.LIGHT_GRAY);
+		lblNewLabel_2.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 14));
+		
+		JLabel lblNewLabel_3 = new JLabel("80000");
+		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_3.setForeground(Color.WHITE);
+		lblNewLabel_3.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 24));
 		
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addComponent(lblNewLabel_3, GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
 				.addGroup(gl_panel.createSequentialGroup()
-					.addGap(55)
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel_3, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE))
-					.addGap(9))
+					.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(48, Short.MAX_VALUE))
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
@@ -512,9 +368,169 @@ public class dashboardBBB {
 					.addGap(12)
 					.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(lblNewLabel_3, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE))
+					.addComponent(lblNewLabel_3, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap())
 		);
 		panel.setLayout(gl_panel);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setForeground(Color.WHITE);
+		panel_1.setBorder(new LineBorder(new Color(44,52,58), 1, true));
+		panel_1.setBackground(new Color(44,52,58));
+		
+		JLabel lblNewLabel_2_1 = new JLabel("EXPENSES");
+		lblNewLabel_2_1.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblNewLabel_2_1.setForeground(Color.LIGHT_GRAY);
+		lblNewLabel_2_1.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 14));
+		
+		JLabel lblNewLabel_3_1 = new JLabel("65000");
+		lblNewLabel_3_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_3_1.setForeground(Color.WHITE);
+		lblNewLabel_3_1.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 24));
+		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
+		gl_panel_1.setHorizontalGroup(
+			gl_panel_1.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_1.createSequentialGroup()
+					.addComponent(lblNewLabel_2_1, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(49, Short.MAX_VALUE))
+				.addComponent(lblNewLabel_3_1, GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+		);
+		gl_panel_1.setVerticalGroup(
+			gl_panel_1.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_1.createSequentialGroup()
+					.addGap(12)
+					.addComponent(lblNewLabel_2_1, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(lblNewLabel_3_1, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE)
+					.addGap(28))
+		);
+		panel_1.setLayout(gl_panel_1);
+		
+		
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setForeground(Color.WHITE);
+		panel_2.setBorder(new LineBorder(new Color(44,52,58), 1, true));
+		panel_2.setBackground(new Color(44,52,58));
+		
+		JLabel lblNewLabel_2_2 = new JLabel("SAVINGS");
+		lblNewLabel_2_2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_2_2.setForeground(Color.LIGHT_GRAY);
+		lblNewLabel_2_2.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 14));
+		
+		JLabel lblNewLabel_3_2 = new JLabel("15000");
+		lblNewLabel_3_2.setForeground(Color.WHITE);
+		lblNewLabel_3_2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_3_2.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 24));
+		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
+		gl_panel_2.setHorizontalGroup(
+			gl_panel_2.createParallelGroup(Alignment.LEADING)
+				.addComponent(lblNewLabel_3_2, GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+				.addComponent(lblNewLabel_2_2, GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+		);
+		gl_panel_2.setVerticalGroup(
+			gl_panel_2.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_2.createSequentialGroup()
+					.addGap(12)
+					.addComponent(lblNewLabel_2_2, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(lblNewLabel_3_2, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE)
+					.addGap(28))
+		);
+		panel_2.setLayout(gl_panel_2);
+		
+		JPanel panel_3 = new JPanel();
+		panel_3.setBorder(new LineBorder(new Color(44,52,58), 1, true));
+		panel_3.setBackground(new Color(44,52,58));
+		
+		JLabel lblNewLabel_2_3 = new JLabel("BUDGET");
+		lblNewLabel_2_3.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblNewLabel_2_3.setForeground(Color.LIGHT_GRAY);
+		lblNewLabel_2_3.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 14));
+		
+		JLabel lblNewLabel_3_3 = new JLabel("50000");
+		lblNewLabel_3_3.setForeground(Color.WHITE);
+		lblNewLabel_3_3.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_3_3.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 24));
+		GroupLayout gl_panel_3 = new GroupLayout(panel_3);
+		gl_panel_3.setHorizontalGroup(
+			gl_panel_3.createParallelGroup(Alignment.LEADING)
+				.addComponent(lblNewLabel_3_3, GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
+				.addGroup(gl_panel_3.createSequentialGroup()
+					.addComponent(lblNewLabel_2_3, GroupLayout.PREFERRED_SIZE, 109, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(57, Short.MAX_VALUE))
+		);
+		gl_panel_3.setVerticalGroup(
+			gl_panel_3.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_3.createSequentialGroup()
+					.addGap(12)
+					.addComponent(lblNewLabel_2_3, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(lblNewLabel_3_3, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE)
+					.addGap(28))
+		);
+		panel_3.setLayout(gl_panel_3);
+		
+		JSeparator separator = new JSeparator();
+		//separator.setForeground(new Color(187, 134, 252));
+		separator.setForeground(new Color(3, 218, 197));
+
+
+		//panel_5.setBackground(new Color(64,55,92));
+		
+		
+		
+		GroupLayout gl_main_page = new GroupLayout(main_page);
+		gl_main_page.setHorizontalGroup(
+			gl_main_page.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_main_page.createSequentialGroup()
+					.addGroup(gl_main_page.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_main_page.createParallelGroup(Alignment.TRAILING, false)
+							.addGroup(gl_main_page.createSequentialGroup()
+								.addGap(26)
+								.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 106, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(account_name, GroupLayout.PREFERRED_SIZE, 204, GroupLayout.PREFERRED_SIZE))
+							.addComponent(separator, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 769, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_main_page.createSequentialGroup()
+							.addGap(28)
+							.addGroup(gl_main_page.createParallelGroup(Alignment.LEADING)
+								.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 701, GroupLayout.PREFERRED_SIZE)
+								.addGroup(gl_main_page.createSequentialGroup()
+									.addComponent(panel, GroupLayout.PREFERRED_SIZE, 172, GroupLayout.PREFERRED_SIZE)
+									.addGap(18)
+									.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
+									.addGap(18)
+									.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 162, GroupLayout.PREFERRED_SIZE)
+									.addGap(18)
+									.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 168, GroupLayout.PREFERRED_SIZE))))
+						.addGroup(gl_main_page.createSequentialGroup()
+							.addGap(74)
+							.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(1, Short.MAX_VALUE))
+		);
+		gl_main_page.setVerticalGroup(
+			gl_main_page.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_main_page.createSequentialGroup()
+					.addGap(15)
+					.addGroup(gl_main_page.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+						.addComponent(account_name, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(separator, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(gl_main_page.createParallelGroup(Alignment.LEADING, false)
+						.addComponent(panel_3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(panel, GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+						.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(btnNewButton)
+					.addGap(37)
+					.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 409, GroupLayout.PREFERRED_SIZE)
+					.addGap(43))
+		);
+		panel_4.setLayout(new BoxLayout(panel_4, BoxLayout.X_AXIS));
 		main_page.setLayout(gl_main_page);
 	}
 }
