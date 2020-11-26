@@ -19,6 +19,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.Statement;
 
 import javax.swing.JSeparator;
@@ -293,8 +294,9 @@ public class dashboardBBB {
 		lblNewLabel_2.setForeground(Color.LIGHT_GRAY);
 		lblNewLabel_2.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 14));
 		
-		JLabel lblNewLabel_3 = new JLabel("900000");
+		JLabel lblNewLabel_3 = new JLabel("80000");
 		lblNewLabel_3.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 24));
+
 		
 		JLabel lblNewLabel_1 = new JLabel("Dashboard");
 		lblNewLabel_1.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 18));
@@ -317,7 +319,7 @@ public class dashboardBBB {
 		lblNewLabel_2_1.setForeground(Color.LIGHT_GRAY);
 		lblNewLabel_2_1.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 14));
 		
-		JLabel lblNewLabel_3_1 = new JLabel("900000");
+		JLabel lblNewLabel_3_1 = new JLabel("65000");
 		lblNewLabel_3_1.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 24));
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
 		gl_panel_1.setHorizontalGroup(
@@ -352,7 +354,7 @@ public class dashboardBBB {
 		lblNewLabel_2_2.setForeground(Color.LIGHT_GRAY);
 		lblNewLabel_2_2.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 14));
 		
-		JLabel lblNewLabel_3_2 = new JLabel("900000");
+		JLabel lblNewLabel_3_2 = new JLabel("15000");
 		lblNewLabel_3_2.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 24));
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(
@@ -381,7 +383,7 @@ public class dashboardBBB {
 		panel_3.setBorder(new LineBorder(Color.LIGHT_GRAY, 2, true));
 		panel_3.setBackground(Color.WHITE);
 		
-		JLabel lblNewLabel_2_3 = new JLabel("DEPOSIT");
+		JLabel lblNewLabel_2_3 = new JLabel("BUDGET\r\n");
 		lblNewLabel_2_3.setForeground(Color.LIGHT_GRAY);
 		lblNewLabel_2_3.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 14));
 		
