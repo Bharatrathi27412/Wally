@@ -265,7 +265,7 @@ public class ExpenseListN {
 		
 		JPanel main_page = new JPanel();
 		main_page.setLayout(null);
-		main_page.setBackground(Color.ORANGE);
+		main_page.setBackground(Color.WHITE);
 		main_page.setBounds(286, 0, 770, 708);
 		frame.getContentPane().add(main_page);
 		
