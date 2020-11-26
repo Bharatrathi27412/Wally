@@ -313,6 +313,7 @@ public class AddExpenseN {
 		main_page.add(comboBox_category);
 		
 		textField_itemname = new JTextField();
+		textField_itemname.setForeground(Color.WHITE);
 		textField_itemname.setBorder(null);
 		textField_itemname.setBackground(new Color(25, 25, 112));
 		textField_itemname.setBounds(100, 183, 350, 19);
@@ -320,13 +321,15 @@ public class AddExpenseN {
 		textField_itemname.setColumns(10);
 		
 		textField_amount = new JTextField();
+		textField_amount.setForeground(Color.WHITE);
 		textField_amount.setBorder(null);
 		textField_amount.setBackground(new Color(25, 25, 112));
-		textField_amount.setBounds(100, 266, 350, 19);
+		textField_amount.setBounds(100, 267, 350, 21);
 		main_page.add(textField_amount);
 		textField_amount.setColumns(10);
 		
 		textField_description = new JTextField();
+		textField_description.setForeground(Color.WHITE);
 		textField_description.setBackground(new Color(25, 25, 112));
 		textField_description.setBorder(null);
 		textField_description.setBounds(100, 360, 350, 19);
