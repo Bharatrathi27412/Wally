@@ -271,6 +271,10 @@ public class ExpenseListN {
 		frame.getContentPane().add(main_page);
 		
 		JDateChooser dateChooser = new JDateChooser();
+		dateChooser.getCalendarButton().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		dateChooser.setBounds(126, 49, 143, 47);
 		main_page.add(dateChooser);
 		dateChooser.setDateFormatString("yyyy-MM-dd");
@@ -282,7 +286,7 @@ public class ExpenseListN {
 				try {
 					Class.forName("com.mysql.cj.jdbc.Driver");
 					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/wally","root","12345678");
-					String sql = "select EXPENSE_ID, CATEGORY_NAME, ITEM_NAME, AMOUNT, EXP_DATE, DESCRIPTION where where EXP_DATE like '"+((JTextField)dateChooser.getDateEditor().getUiComponent()).getText()+"';";
+					String sql = "select EXPENSE_ID, CATEGORY_NAME, ITEM_NAME, AMOUNT, EXP_DATE, DESCRIPTION from expense_list where EXP_DATE like '"+((JTextField)dateChooser.getDateEditor().getUiComponent()).getText()+"';";
 					PreparedStatement pst = con.prepareStatement(sql);
 					ResultSet rs = pst.executeQuery();
 					table.setModel(DbUtils.resultSetToTableModel(rs));
