@@ -23,6 +23,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.sql.*;
 import javax.swing.*;
+import com.toedter.calendar.JDateChooser;
 
 public class ExpenseListN {
 
@@ -258,7 +259,7 @@ public class ExpenseListN {
 		AnalyticsP.setLayout(gl_AnalyticsP);
 		
 		JLabel lblNewLabel = new JLabel("");
-		Image img4 = new ImageIcon(this.getClass().getResource("/dashlogo.png")).getImage();
+		Image img4 = new ImageIcon(this.getClass().getResource("/dashlogon.png")).getImage();
 		lblNewLabel.setIcon(new ImageIcon(img4));
 		lblNewLabel.setBounds(10, 50, 266, 59);
 		sidebar.add(lblNewLabel);
@@ -269,14 +270,19 @@ public class ExpenseListN {
 		main_page.setBounds(286, 0, 770, 708);
 		frame.getContentPane().add(main_page);
 		
+		JDateChooser dateChooser = new JDateChooser();
+		dateChooser.setBounds(126, 49, 143, 47);
+		main_page.add(dateChooser);
+		dateChooser.setDateFormatString("yyyy-MM-dd");
+		
 		JButton btnLoadExpenseList = new JButton("Load Expense List");
-		btnLoadExpenseList.setFont(new Font("Century Gothic", Font.PLAIN, 14));
+		btnLoadExpenseList.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 14));
 		btnLoadExpenseList.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					Class.forName("com.mysql.cj.jdbc.Driver");
 					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/wally","root","12345678");
-					String sql = "Select * from expense_list";
+					String sql = "select EXPENSE_ID, CATEGORY_NAME, ITEM_NAME, AMOUNT, EXP_DATE, DESCRIPTION where where EXP_DATE like '"+((JTextField)dateChooser.getDateEditor().getUiComponent()).getText()+"';";
 					PreparedStatement pst = con.prepareStatement(sql);
 					ResultSet rs = pst.executeQuery();
 					table.setModel(DbUtils.resultSetToTableModel(rs));
@@ -294,5 +300,7 @@ public class ExpenseListN {
 		
 		table = new JTable();
 		scrollPane.setViewportView(table);
+		
+		
 	}
 }

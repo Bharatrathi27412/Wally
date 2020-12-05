@@ -280,7 +280,7 @@ public class dashboardBBB {
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		Image img4 = new ImageIcon(this.getClass().getResource("/dashlogo.png")).getImage();
+		Image img4 = new ImageIcon(this.getClass().getResource("/dashlogon.png")).getImage();
 		lblNewLabel.setIcon(new ImageIcon(img4));
 		lblNewLabel.setBounds(19, 51, 266, 59);
 		sidebar.add(lblNewLabel);

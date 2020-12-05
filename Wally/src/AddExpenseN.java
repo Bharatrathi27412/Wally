@@ -259,7 +259,7 @@ public class AddExpenseN {
 		AnalyticsP.setLayout(gl_AnalyticsP);
 		
 		JLabel lblNewLabel = new JLabel("");
-		Image img4 = new ImageIcon(this.getClass().getResource("/dashlogo.png")).getImage();
+		Image img4 = new ImageIcon(this.getClass().getResource("/dashlogon.png")).getImage();
 		lblNewLabel.setIcon(new ImageIcon(img4));
 		lblNewLabel.setBounds(10, 50, 266, 59);
 		sidebar.add(lblNewLabel);
