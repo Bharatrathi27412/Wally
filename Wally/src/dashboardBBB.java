@@ -79,6 +79,281 @@ public class dashboardBBB {
 		
 		JPanel sidebar = new JPanel();
 		sidebar.setBounds(0, 0, 286, 708);
+		sidebar.setBackground(new Color(18, 18, 18));
+
+		frame.getContentPane().add(sidebar);
+		
+		JPanel dashboardP = new JPanel();
+		dashboardP.setBackground(new Color(41, 57, 80));
+		
+		JPanel DashboardC = new JPanel();
+		DashboardC.setLayout(null);
+		DashboardC.setPreferredSize(new Dimension(3, 61));
+		DashboardC.setMinimumSize(new Dimension(3, 61));
+		DashboardC.setBackground(Color.CYAN);
+		DashboardC.setOpaque(true);
+		
+
+		
+		JLabel DashboardL = new JLabel();
+		Image img = new ImageIcon(this.getClass().getResource("/dashboard.png")).getImage();
+		DashboardL.setIcon(new ImageIcon(img));
+		DashboardL.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+                dashboardP.setBackground(new Color(41,57,80));
+
+			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+                //dashboardP.setBackground(new Color(41,57,80));
+              //  DashboardC.setOpaque(true);
+
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+                //dashboardP.setBackground(new Color(18,18,18));
+
+			}
+		});
+		DashboardL.setText("Dashboard");
+		DashboardL.setMinimumSize(new Dimension(97, 61));
+		DashboardL.setMaximumSize(new Dimension(97, 61));
+		DashboardL.setHorizontalAlignment(SwingConstants.CENTER);
+		DashboardL.setForeground(Color.WHITE);
+		DashboardL.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 18));
+		
+		
+		JPanel AddExpenseP = new JPanel();
+		AddExpenseP.setBackground(new Color(18, 18, 18));
+		
+		JPanel AddExpenseC = new JPanel();
+		AddExpenseC.setOpaque(false);
+		AddExpenseC.setBackground(Color.CYAN);
+		AddExpenseC.setMinimumSize(new Dimension(3, 61));
+		AddExpenseC.setPreferredSize(new Dimension(3, 61));
+		AddExpenseC.setLayout(null);
+
+		
+		JLabel AddExpenseL = new JLabel();
+		Image img1 = new ImageIcon(this.getClass().getResource("/addexpense.png")).getImage();
+		AddExpenseL.setIcon(new ImageIcon(img1));
+		AddExpenseL.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				//AddExpenseP.setBackground(new Color(41,57,80));
+				//AddExpenseC.setOpaque(true);
+				
+				AddExpenseN a1 = new AddExpenseN();
+				a1.NewScreen();
+				frame.dispose();
+
+
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+                AddExpenseP.setBackground(new Color(41,57,80));
+
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+                AddExpenseP.setBackground(new Color(18,18,18));
+
+			}
+		});
+		AddExpenseL.setText("Add Expense");
+		AddExpenseL.setMinimumSize(new Dimension(97, 61));
+		AddExpenseL.setMaximumSize(new Dimension(97, 61));
+		AddExpenseL.setHorizontalAlignment(SwingConstants.CENTER);
+		AddExpenseL.setForeground(Color.WHITE);
+		AddExpenseL.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 18));
+		
+		
+		JPanel ExpenseListP = new JPanel();
+		ExpenseListP.setBackground(new Color(18,18,18));
+		
+		JPanel ExpenseListC = new JPanel();
+		ExpenseListC.setOpaque(false);
+		ExpenseListC.setLayout(null);
+		ExpenseListC.setPreferredSize(new Dimension(3, 61));
+		ExpenseListC.setMinimumSize(new Dimension(3, 61));
+		ExpenseListC.setBackground(Color.CYAN);
+
+		
+		JLabel ExpenseListL = new JLabel();
+		Image img2 = new ImageIcon(this.getClass().getResource("/list.png")).getImage();
+		ExpenseListL.setIcon(new ImageIcon(img2));
+		ExpenseListL.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				//ExpenseListP.setBackground(new Color(41,57,80));
+			//	ExpenseListC.setOpaque(true);
+
+				ExpenseListN e1= new ExpenseListN();
+				e1.NewScreen();
+				frame.dispose();
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				ExpenseListP.setBackground(new Color(41,57,80));
+
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+                ExpenseListP.setBackground(new Color(18,18,18));
+
+			}
+		});
+		ExpenseListL.setText("Expense List");
+		ExpenseListL.setMinimumSize(new Dimension(97, 61));
+		ExpenseListL.setMaximumSize(new Dimension(97, 61));
+		ExpenseListL.setHorizontalAlignment(SwingConstants.CENTER);
+		ExpenseListL.setForeground(Color.WHITE);
+		ExpenseListL.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 18));
+		
+		JPanel AnalyticsP = new JPanel();
+		AnalyticsP.setBackground(new Color(18, 18, 18));
+		
+		JPanel AnalyticsC = new JPanel();
+		AnalyticsC.setOpaque(false);
+		AnalyticsC.setLayout(null);
+		AnalyticsC.setPreferredSize(new Dimension(3, 61));
+		AnalyticsC.setMinimumSize(new Dimension(3, 61));
+		AnalyticsC.setBackground(Color.CYAN);
+
+		
+		JLabel AnalyticsL = new JLabel();
+		Image img3 = new ImageIcon(this.getClass().getResource("/analytics.png")).getImage();
+		AnalyticsL.setIcon(new ImageIcon(img3));
+		AnalyticsL.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				//AnalyticsP.setBackground(new Color(41,57,80));
+				//AnalyticsC.setOpaque(true);
+				AnalyticsN reports= new AnalyticsN();
+				reports.NewScreen();
+				frame.dispose();
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				AnalyticsP.setBackground(new Color(41,57,80));
+
+
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+                AnalyticsP.setBackground(new Color(18,18,18));
+
+			}
+		});
+		AnalyticsL.setText("Analytics");
+		AnalyticsL.setMinimumSize(new Dimension(97, 61));
+		AnalyticsL.setMaximumSize(new Dimension(97, 61));
+		AnalyticsL.setHorizontalAlignment(SwingConstants.CENTER);
+		AnalyticsL.setForeground(Color.WHITE);
+		AnalyticsL.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 18));
+		
+		GroupLayout gl_AnalyticsP = new GroupLayout(AnalyticsP);
+		gl_AnalyticsP.setHorizontalGroup(
+			gl_AnalyticsP.createParallelGroup(Alignment.TRAILING)
+				.addGroup(Alignment.LEADING, gl_AnalyticsP.createSequentialGroup()
+					.addComponent(AnalyticsC, GroupLayout.PREFERRED_SIZE, 3, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+					.addComponent(AnalyticsL, GroupLayout.PREFERRED_SIZE, 270, GroupLayout.PREFERRED_SIZE))
+		);
+		gl_AnalyticsP.setVerticalGroup(
+			gl_AnalyticsP.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_AnalyticsP.createSequentialGroup()
+					.addGroup(gl_AnalyticsP.createParallelGroup(Alignment.TRAILING, false)
+						.addComponent(AnalyticsL, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(AnalyticsC, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 59, Short.MAX_VALUE))
+					.addContainerGap())
+		);
+		AnalyticsP.setLayout(gl_AnalyticsP);
+		
+		JLabel lblNewLabel = new JLabel("");
+		Image img4 = new ImageIcon(this.getClass().getResource("/dashlogon.png")).getImage();
+		lblNewLabel.setIcon(new ImageIcon(img4));
+		GroupLayout gl_sidebar = new GroupLayout(sidebar);
+		gl_sidebar.setHorizontalGroup(
+			gl_sidebar.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_sidebar.createSequentialGroup()
+					.addGap(10)
+					.addComponent(lblNewLabel))
+				.addGroup(gl_sidebar.createSequentialGroup()
+					.addComponent(AnalyticsP, GroupLayout.PREFERRED_SIZE, 285, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+				.addGroup(gl_sidebar.createParallelGroup(Alignment.TRAILING, false)
+					.addComponent(dashboardP, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addComponent(AddExpenseP, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addComponent(ExpenseListP, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 285, Short.MAX_VALUE))
+		);
+		gl_sidebar.setVerticalGroup(
+			gl_sidebar.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_sidebar.createSequentialGroup()
+					.addGap(50)
+					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)
+					.addGap(60)
+					.addComponent(dashboardP, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(AddExpenseP, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(12)
+					.addComponent(ExpenseListP, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(12)
+					.addComponent(AnalyticsP, GroupLayout.PREFERRED_SIZE, 56, GroupLayout.PREFERRED_SIZE)
+					.addGap(256))
+		);
+		
+		GroupLayout gl_ExpenseListP = new GroupLayout(ExpenseListP);
+		gl_ExpenseListP.setHorizontalGroup(
+			gl_ExpenseListP.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_ExpenseListP.createSequentialGroup()
+					.addComponent(ExpenseListC, GroupLayout.PREFERRED_SIZE, 3, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(ExpenseListL, GroupLayout.PREFERRED_SIZE, 270, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		gl_ExpenseListP.setVerticalGroup(
+			gl_ExpenseListP.createParallelGroup(Alignment.LEADING)
+				.addComponent(ExpenseListL, GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+				.addComponent(ExpenseListC, GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+		);
+		ExpenseListP.setLayout(gl_ExpenseListP);
+		GroupLayout gl_AddExpenseP = new GroupLayout(AddExpenseP);
+		gl_AddExpenseP.setHorizontalGroup(
+			gl_AddExpenseP.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_AddExpenseP.createSequentialGroup()
+					.addComponent(AddExpenseC, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(12)
+					.addComponent(AddExpenseL, GroupLayout.PREFERRED_SIZE, 268, GroupLayout.PREFERRED_SIZE))
+		);
+		gl_AddExpenseP.setVerticalGroup(
+			gl_AddExpenseP.createParallelGroup(Alignment.LEADING)
+				.addComponent(AddExpenseC, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)
+				.addComponent(AddExpenseL, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)
+		);
+		AddExpenseP.setLayout(gl_AddExpenseP);
+		GroupLayout gl_dashboardP = new GroupLayout(dashboardP);
+		gl_dashboardP.setHorizontalGroup(
+			gl_dashboardP.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_dashboardP.createSequentialGroup()
+					.addComponent(DashboardC, GroupLayout.PREFERRED_SIZE, 3, GroupLayout.PREFERRED_SIZE)
+					.addGap(14)
+					.addComponent(DashboardL, GroupLayout.PREFERRED_SIZE, 268, GroupLayout.PREFERRED_SIZE))
+		);
+		gl_dashboardP.setVerticalGroup(
+			gl_dashboardP.createParallelGroup(Alignment.LEADING)
+				.addComponent(DashboardL, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
+				.addComponent(DashboardC, GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
+		);
+		dashboardP.setLayout(gl_dashboardP);
+		sidebar.setLayout(gl_sidebar);
+
+		
+		/*JPanel sidebar = new JPanel();
+		sidebar.setBounds(0, 0, 286, 708);
 		//sidebar.setBackground(new Color(54, 36, 89));
 		sidebar.setBackground(new Color(18, 18, 18));
 
@@ -283,7 +558,7 @@ public class dashboardBBB {
 		Image img4 = new ImageIcon(this.getClass().getResource("/dashlogon.png")).getImage();
 		lblNewLabel.setIcon(new ImageIcon(img4));
 		lblNewLabel.setBounds(19, 51, 266, 59);
-		sidebar.add(lblNewLabel);
+		sidebar.add(lblNewLabel);*/
 		
 		JPanel main_page = new JPanel();
 		main_page.setBackground(new Color(34,40,44));
