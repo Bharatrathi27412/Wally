@@ -8,6 +8,8 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import java.awt.Dimension;
@@ -369,7 +371,7 @@ public class AddExpenseN {
 		JLabel lbl_description = new JLabel("Description :");
 		lbl_description.setForeground(new Color(255, 255, 255));
 		lbl_description.setFont(new Font("Century Gothic", Font.BOLD, 15));
-		lbl_description.setBounds(100, 329, 130, 21);
+		lbl_description.setBounds(100, 342, 130, 21);
 		main_page.add(lbl_description);
 		
 		JLabel lbl_category = new JLabel("Category :");
@@ -387,30 +389,30 @@ public class AddExpenseN {
 		JComboBox comboBox_category = new JComboBox();
 		comboBox_category.setFont(new Font("Century Gothic", Font.PLAIN, 14));
 		comboBox_category.setModel(new DefaultComboBoxModel(new String[] {"", "Utilities", "Subscription", "Rent/Emi", "Shopping", "Travel", "Health", "Others"}));
-		comboBox_category.setBounds(100, 457, 350, 21);
+		comboBox_category.setBounds(100, 458, 350, 21);
 		main_page.add(comboBox_category);
 		
 		textField_itemname = new JTextField();
-		textField_itemname.setForeground(Color.BLACK);
+		textField_itemname.setForeground(Color.WHITE);
 		textField_itemname.setBorder(null);
-		textField_itemname.setBackground(Color.WHITE);
-		textField_itemname.setBounds(100, 183, 350, 19);
+		textField_itemname.setBackground(new Color(34, 40, 44));
+		textField_itemname.setBounds(100, 184, 350, 19);
 		main_page.add(textField_itemname);
 		textField_itemname.setColumns(10);
 		
 		textField_amount = new JTextField();
-		textField_amount.setForeground(Color.BLACK);
+		textField_amount.setForeground(Color.WHITE);
 		textField_amount.setBorder(null);
-		textField_amount.setBackground(Color.WHITE);
+		textField_amount.setBackground(new Color(34, 40, 44));
 		textField_amount.setBounds(100, 267, 350, 21);
 		main_page.add(textField_amount);
 		textField_amount.setColumns(10);
 		
 		textField_description = new JTextField();
-		textField_description.setForeground(Color.BLACK);
-		textField_description.setBackground(Color.WHITE);
+		textField_description.setForeground(Color.WHITE);
+		textField_description.setBackground(new Color(34, 40, 44));
 		textField_description.setBorder(null);
-		textField_description.setBounds(100, 360, 350, 19);
+		textField_description.setBounds(100, 374, 350, 19);
 		main_page.add(textField_description);
 		textField_description.setColumns(10);
 		
@@ -423,6 +425,14 @@ public class AddExpenseN {
 		btn_enterb.setBackground(new Color(175, 238, 238));
 		btn_enterb.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(dateChooser_date.getDateEditor().toString() == "")
+				{
+					JOptionPane.showMessageDialog(null, "Please select appropriate date");
+					
+				}else if(textField_amount.getText().toString() == "")
+				{
+					JOptionPane.showMessageDialog(null, "Please enter amount");
+				}
 				try {
 					Class.forName("com.mysql.cj.jdbc.Driver");
 					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/wally","root","12345678");
@@ -454,11 +464,11 @@ public class AddExpenseN {
 		main_page.add(btn_cancel);
 		
 		JSeparator separator = new JSeparator();
-		separator.setBounds(100, 201, 350, 2);
+		separator.setBounds(100, 211, 350, 2);
 		main_page.add(separator);
 		
 		JSeparator separator_1 = new JSeparator();
-		separator_1.setBounds(100, 387, 350, 2);
+		separator_1.setBounds(100, 396, 350, 2);
 		main_page.add(separator_1);
 		
 		JSeparator separator_2 = new JSeparator();
