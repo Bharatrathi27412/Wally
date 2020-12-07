@@ -391,7 +391,7 @@ public class AddExpenseN {
 		main_page.add(comboBox_category);
 		
 		textField_itemname = new JTextField();
-		textField_itemname.setForeground(Color.WHITE);
+		textField_itemname.setForeground(Color.BLACK);
 		textField_itemname.setBorder(null);
 		textField_itemname.setBackground(Color.WHITE);
 		textField_itemname.setBounds(100, 183, 350, 19);
@@ -399,7 +399,7 @@ public class AddExpenseN {
 		textField_itemname.setColumns(10);
 		
 		textField_amount = new JTextField();
-		textField_amount.setForeground(Color.WHITE);
+		textField_amount.setForeground(Color.BLACK);
 		textField_amount.setBorder(null);
 		textField_amount.setBackground(Color.WHITE);
 		textField_amount.setBounds(100, 267, 350, 21);
@@ -407,7 +407,7 @@ public class AddExpenseN {
 		textField_amount.setColumns(10);
 		
 		textField_description = new JTextField();
-		textField_description.setForeground(Color.WHITE);
+		textField_description.setForeground(Color.BLACK);
 		textField_description.setBackground(Color.WHITE);
 		textField_description.setBorder(null);
 		textField_description.setBounds(100, 360, 350, 19);
@@ -444,6 +444,8 @@ public class AddExpenseN {
 		btn_cancel.setBackground(new Color(175, 238, 238));
 		btn_cancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				dashboardBBB d2 = new dashboardBBB();
+				d2.NewScreen();
 				frame.dispose();
 			}
 		});

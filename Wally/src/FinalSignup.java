@@ -235,6 +235,8 @@ public class FinalSignup {
 		JButton btnCancel = new JButton("Cancel");
 		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ss s2 = new ss();
+				s2.NewScreen();
 				frame.dispose();
 			}
 		});

@@ -19,6 +19,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.Statement;
 
 import javax.swing.JSeparator;
@@ -350,6 +351,44 @@ public class dashboardBBB {
 		);
 		dashboardP.setLayout(gl_dashboardP);
 		sidebar.setLayout(gl_sidebar);
+		
+		JLabel lblNewLabel_3 = new JLabel("");
+		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_3.setForeground(Color.WHITE);
+		lblNewLabel_3.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 24));
+		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/wally","root","12345678");
+			Statement stmt = con.createStatement();
+			String sql = "select salary from login_info where login_id = \"Bharat1\";";
+			ResultSet rs = stmt.executeQuery(sql);
+			rs.next();
+			lblNewLabel_3.setText(rs.getString("salary"));
+		
+			con.close();
+		}catch (Exception e1) {
+			JOptionPane.showMessageDialog(null,e1);
+		}
+		
+		JLabel lblNewLabel_3_1 = new JLabel("65000");
+		lblNewLabel_3_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_3_1.setForeground(Color.WHITE);
+		lblNewLabel_3_1.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 24));
+		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/wally","root","12345678");
+			Statement stmt = con.createStatement();
+			String sql = "select sum(amount) from expense_list where month(exp_date) = month(current_date()) and year(exp_date) = year(current_date());";
+			ResultSet rs = stmt.executeQuery(sql);
+			rs.next();
+			lblNewLabel_3_1.setText(rs.getString("sum(amount)"));
+		
+			con.close();
+		}catch (Exception e1) {
+			JOptionPane.showMessageDialog(null,e1);
+		}
 
 		
 		/*JPanel sidebar = new JPanel();
@@ -565,6 +604,7 @@ public class dashboardBBB {
 		main_page.setBounds(286, 0, 770, 708);
 		frame.getContentPane().add(main_page);
 		
+		
 		JLabel lblNewLabel_1 = new JLabel("Dashboard");
 		lblNewLabel_1.setForeground(Color.WHITE);
 		lblNewLabel_1.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 18));
@@ -573,7 +613,7 @@ public class dashboardBBB {
 		account_name.setForeground(Color.WHITE);
 		Image img5 = new ImageIcon(this.getClass().getResource("/account.png")).getImage();
 		account_name.setIcon(new ImageIcon(img5));
-
+	
 
 		account_name.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 18));
 		
@@ -624,10 +664,7 @@ public class dashboardBBB {
 		lblNewLabel_2.setForeground(Color.LIGHT_GRAY);
 		lblNewLabel_2.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 14));
 		
-		JLabel lblNewLabel_3 = new JLabel("80000");
-		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3.setForeground(Color.WHITE);
-		lblNewLabel_3.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 24));
+		
 		
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
@@ -658,10 +695,6 @@ public class dashboardBBB {
 		lblNewLabel_2_1.setForeground(Color.LIGHT_GRAY);
 		lblNewLabel_2_1.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 14));
 		
-		JLabel lblNewLabel_3_1 = new JLabel("65000");
-		lblNewLabel_3_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3_1.setForeground(Color.WHITE);
-		lblNewLabel_3_1.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 24));
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
 		gl_panel_1.setHorizontalGroup(
 			gl_panel_1.createParallelGroup(Alignment.LEADING)
@@ -697,6 +730,9 @@ public class dashboardBBB {
 		lblNewLabel_3_2.setForeground(Color.WHITE);
 		lblNewLabel_3_2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_3_2.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 24));
+		
+		
+		
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(
 			gl_panel_2.createParallelGroup(Alignment.LEADING)
