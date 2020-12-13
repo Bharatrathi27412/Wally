@@ -51,7 +51,7 @@ public class updateIncome extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		panel.setBackground(Color.BLUE);
+		panel.setBackground(new Color(18,18,18));
 		panel.setBounds(0, 0, 342, 227);
 		contentPane.add(panel);
 		panel.setLayout(null);

@@ -400,7 +400,7 @@ public class AddExpenseN {
 		main_page.add(textField_itemname);
 		textField_itemname.setColumns(10);
 		
-		textField_amount = new JTextField();
+		textField_amount = new JTextField("");
 		textField_amount.setForeground(Color.WHITE);
 		textField_amount.setBorder(null);
 		textField_amount.setBackground(new Color(34, 40, 44));
@@ -425,14 +425,18 @@ public class AddExpenseN {
 		btn_enterb.setBackground(new Color(175, 238, 238));
 		btn_enterb.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(dateChooser_date.getDateEditor().toString() == "")
+				if(dateChooser_date.getDateEditor().toString().isEmpty())
 				{
-					JOptionPane.showMessageDialog(null, "Please select appropriate date");
+					JOptionPane.showMessageDialog(null, "Please select appropriate date",null, JOptionPane.ERROR_MESSAGE);
 					
-				}else if(textField_amount.getText().toString() == "")
+				}else if(textField_amount.getText().toString().isEmpty())
 				{
-					JOptionPane.showMessageDialog(null, "Please enter amount");
+					JOptionPane.showMessageDialog(null, "Enter amount", "error", JOptionPane.ERROR_MESSAGE);
+				}else if(textField_itemname.getText().toString().isEmpty())
+				{
+					JOptionPane.showMessageDialog(null, "Please enter item name",null, JOptionPane.ERROR_MESSAGE);
 				}
+				else {
 				try {
 					Class.forName("com.mysql.cj.jdbc.Driver");
 					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/wally","root","12345678");
@@ -444,7 +448,7 @@ public class AddExpenseN {
 						frame.dispose();
 						dashboardBBB db2 = new dashboardBBB();
 						db2.NewScreen();
-			}
+			}}
 		});
 		btn_enterb.setFont(new Font("Century Gothic", Font.PLAIN, 14));
 		btn_enterb.setBounds(219, 623, 85, 21);
